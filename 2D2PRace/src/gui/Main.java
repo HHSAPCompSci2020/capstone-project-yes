@@ -6,9 +6,18 @@ import javax.swing.JFrame;
 
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
-
+/**
+ * Main class to run the game
+ * 
+ * @author Connor Chow
+ * @version 5/7/21
+ */
 public class Main {
 
+	/**
+	 * Main method
+	 * @param args
+	 */
 	public static void main(String args[]) {
 		DrawingSurface drawing = new DrawingSurface();
 		PApplet.runSketch(new String[]{""}, drawing);
