@@ -17,6 +17,7 @@ public class MenuScreen extends Screen {
 	public void draw()
 	{
 		surface.background(255);
+		surface.fill(0);
 		String str = "Menu!!!!!";
 		float w = surface.textWidth(str);
 		surface.text(str, surface.width/2-w/2, surface.height/2);
