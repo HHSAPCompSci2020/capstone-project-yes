@@ -1,7 +1,21 @@
 package gui;
 
-import processing.core.PApplet;
+public class MenuScreen extends Screen {
 
-public class MenuScreen extends PApplet {
-
+	public MenuScreen(DrawingSurface surface)
+	{
+		
+	}
+	
+	public void setup()
+	{
+		
+	}
+	
+	
+	public void draw()
+	{
+		
+	}
+	
 }
