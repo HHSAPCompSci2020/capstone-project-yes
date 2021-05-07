@@ -21,12 +21,19 @@ public class IntroScreen extends Screen {
 	{
 		surface.background(0,65,175);
 		surface.fill(255);
+
 		surface.rect(startButton.x, startButton.y, startButton.width, startButton.height, 10, 10, 10, 10);
 		surface.fill(0);
-		String str = "< Press Start >";
-		float w = surface.textWidth(str);
-		float h = surface.textWidth(str)/str.length();
-		surface.text(str, startButton.x+startButton.width/2-w/2, startButton.y+startButton.height/2+h/2);
+		String buttonText = "< Press Start >";
+		float w = surface.textWidth(buttonText);
+		float h = surface.textWidth(buttonText)/buttonText.length();
+		surface.text(buttonText, startButton.x+startButton.width/2-w/2, startButton.y+startButton.height/2+h/2);
+
+		surface.fill(255);
+		String title = "2D2PRace";
+		String subtitle = "By: Alex and Connor";
+		surface.text(title, surface.width/2-w/2, surface.height/8);
+		surface.text(subtitle, surface.width/2-w/2, surface.height*2/8);
 	}
 	
 	public void mousePressed() {
