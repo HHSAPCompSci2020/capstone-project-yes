@@ -21,6 +21,8 @@ public class MenuScreen extends Screen {
 	{
 		super();
 		this.surface = surface;
+		
+		selection = new Rectangle(960/2-100,540/2-50,200,100);
 	}
 	
 	/**
@@ -28,10 +30,15 @@ public class MenuScreen extends Screen {
 	 */
 	public void draw()
 	{
+		String menuTitle = "Menu";
+		float w = surface.textWidth(menuTitle);
+		surface.text(menuTitle, surface.width/2-w/2, surface.height/8);
+		
 		surface.background(255);
+		surface.fill(255);
+		surface.rect(selection.x, selection.y, selection.width, selection.height, 10, 10, 10, 10);
 		surface.fill(0);
 		String str = "Menu!!!!!";
-		float w = surface.textWidth(str);
 		surface.text(str, surface.width/2-w/2, surface.height/2);
 	}
 	
