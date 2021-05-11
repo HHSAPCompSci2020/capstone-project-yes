@@ -14,7 +14,8 @@ public class Car {
 	private Projectile projectile;
 	
 	public Car(PImage img) {
-		
+		xVelocity = 0;
+		yVelocity = 0;
 	}
 
 }
