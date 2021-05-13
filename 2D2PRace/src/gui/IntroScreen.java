@@ -31,12 +31,13 @@ public class IntroScreen extends Screen {
 	 */
 	public void draw()
 	{
+		surface.pushMatrix();
 		surface.background(0,65,175);
 		surface.fill(255);
 
 		surface.rect(startButton.x, startButton.y, startButton.width, startButton.height, 10, 10, 10, 10);
 		surface.fill(0);
-		String buttonText = "< Press Start >";
+		String buttonText = "< Open >";
 		float w = surface.textWidth(buttonText);
 		float h = surface.textWidth(buttonText)/buttonText.length();
 		surface.text(buttonText, startButton.x+startButton.width/2-w/2, startButton.y+startButton.height/2+h/2);
@@ -46,6 +47,7 @@ public class IntroScreen extends Screen {
 		String subtitle = "By: Alex and Connor";
 		surface.text(title, surface.width/2-w/2, surface.height/8);
 		surface.text(subtitle, surface.width/2-w/2, surface.height*2/8);
+		surface.popMatrix();
 	}
 	
 	/**
