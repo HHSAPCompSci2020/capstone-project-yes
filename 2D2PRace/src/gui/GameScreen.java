@@ -42,14 +42,17 @@ public class GameScreen extends Screen {
 		p1.draw(surface);
 		p2.draw(surface);
 		
+		surface.popMatrix();
+		
 		if (surface.isPressed(KeyEvent.VK_LEFT))
-			p2.turn();
+			p2.turn(-1);
 		if (surface.isPressed(KeyEvent.VK_RIGHT))
-			p2.turn();
+			p2.turn(1);
 		if (surface.isPressed(KeyEvent.VK_UP))
 			p2.accelerate();
 		
-		surface.popMatrix();
+		
+		p2.act();
 	}
 	
 }

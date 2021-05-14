@@ -6,5 +6,11 @@ package elements;
  * @version 5/7/21
  */
 public class Projectile {
+	
+	
+	
+	public void shoot() {
+		
+	}
 
 }

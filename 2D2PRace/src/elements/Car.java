@@ -14,30 +14,59 @@ public class Car extends MovingImage {
 	private static final int CAR_HEIGHT = 60;
 	
 	
-	private double xSpeed, ySpeed;
+	private double speed, direction, friction;
 	private Projectile projectile;
 	
 	public Car(PImage img, int x, int y) {
 		super(img, x, y, CAR_WIDTH, CAR_HEIGHT);
-		xSpeed = 0;
-		ySpeed = 0;
-		projectile = new Projectile();
+		speed = 0;
+		direction = 0;
+		friction *= 0.85;
 	}
 	
 	public void accelerate() {
-		
+		if(speed <= 30 && speed >= -30)
+			speed += 1;
 	}
 	
-	public void turn() {
-		
+	
+	public void turn(int turn) {
+		direction += turn;
 	}
 	
 	public void boost() {
-		
+		speed = 60;
 	}
 	
 	public void shoot() {
+		projectile = new Projectile();
+		projectile.shoot();
+	}
+	
+	public void act() {
+		double xCoord = getX();
+		double yCoord = getY();
 		
+		//speed *= friction;
+		
+		double vy = speed * Math.sin(Math.toRadians(direction));
+		double vx = speed * Math.cos(Math.toRadians(direction));
+		
+		if (Math.abs(speed) < .5)
+			speed = 0;
+		
+		yCoord += vy;
+		xCoord += vx;
+		
+		/*
+		if(projectile touches car) {
+			speed = 0;
+			projectile = null;
+		}
+		*/
+		
+		moveToLocation(xCoord,yCoord);
+	
 	}
 	
 	
