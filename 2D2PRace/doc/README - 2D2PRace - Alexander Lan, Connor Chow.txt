@@ -13,13 +13,7 @@ Who would want to use your program?
 What are the primary features of your program?]
 
 
-This program is a top-down, classic 2d racing game specifically built for local players with projectiles and physics. 
-Your objective is simple: beat your opponent to the finish line. You have two gadgets you can use: boost and projectiles. 
-Boost allows you to give your car a quick burst of speed. 
-Projectiles will shoot forward only out of the car and will slow down your opponent if you hit them. 
-There are different modes you and your opponent can try out in this game.
-
-
+This program is a top-down, classic 2d racing game specifically built for local players with projectiles and physics. Your objective is simple: beat your opponent to the finish line. You have two gadgets you can use: boost and projectiles. Boost allows you to give your car a quick burst of speed. Projectiles will shoot forward only out of the car and will slow down your opponent if you hit them.
 
 
 Instructions:
@@ -34,14 +28,12 @@ WASD - Player 1
 Arrow Keys - Player 2
 ‘.’ - Player 2 shoot projectile button
 ‘/’ - Player 2 boost
-ESC - Pause / Quit[b]
+ESC - Pause / Quit
 
 
 Places to click:
  
-Anywhere on the Starting Screen, 
-leading to the Menu screen, 
-which has buttons specified on the menu screen to open the game’s GUI, that shows buttons
+Anywhere on the Starting Screen, leading to the Menu screen, which has buttons specified on the menu screen to open the game’s GUI, that shows buttons
 
 
 Starting Screen
@@ -64,6 +56,7 @@ Map Screen
 Click on a map that you want to race in.  
 Once selected a map, then press game modes
  
+The screens are all going to be in the same window
 
 
 Customization
@@ -78,7 +71,7 @@ Features List (THE ONLY SECTION THAT CANNOT CHANGE LATER):
 Must-have Features:
 [These are features that we agree you will definitely have by the project due date. A good final project would have all of these completed. At least 5 are required. Each feature should be fully described (at least a few full sentences for each)]
 * Checkpoints - so car objects don’t exploit racing around the track
-* Boundaries - so car objects don’t leave the track
+* Boundaries - so car objects don’t leave the track / confined within the track space
 * Physics - friction, velocity, etc.
 * Projectiles - working projectiles that collide with cars to sabotage the specified user
 * Boost - Gives the users  a quick burst of speed to the car
@@ -106,7 +99,7 @@ Stretch Features:
 Class List:
 [This section lists the Java classes that make up the program and very briefly describes what each represents. It’s totally fine to put this section in list format and not to use full sentences.]
 * Elements
-   * Car: A 2D car being used to drive around[h]
+   * Car: A 2D car being used to drive around
    * Checkpoint: An object that detects when a car has collided with it (to make sure the cars goes the correct way to earn a point for it’s lap)
    * StartFinishLine: extends Checkpoint, adds points to player 1/player 2 when their corresponding car crosses this object
    * Projectile: object fired from the car to sabotage other cars
@@ -121,8 +114,8 @@ Class List:
 Credits:
 Connor - GUI classes
 Alexander - Element classes
-
-
+Used ScreenChanger and AnimationDemoProcessing processing code from Mr. Shelby
+ Car Images from https://opengameart.org/content/top-down-view-cars-and-trucks-racing-sprites 
 ________________
 
 
@@ -140,3 +133,4 @@ Other possible Ideas:
 * Find the Imposter
 * Fidget App
 * Custom Board Game
+*

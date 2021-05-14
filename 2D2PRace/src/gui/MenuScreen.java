@@ -60,8 +60,8 @@ public class MenuScreen extends Screen {
 	
 	/**
 	 * Checks when the mouse is pressed in the specified area
-	 * In this case, it would be when the mouse is pressed inside the start button
-	 * to change the screen to the GameScreen
+	 * In this case, it would be when the mouse is pressed inside the start button or how-to-play button
+	 * to change the screen to the GameScreen or the HowToPlayScreen
 	 */
 	public void mousePressed() {
 		Point p = new Point(surface.mouseX,surface.mouseY);
