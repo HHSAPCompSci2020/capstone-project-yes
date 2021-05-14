@@ -1,6 +1,9 @@
 package gui;
 
+import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import elements.Car;
 
@@ -15,6 +18,7 @@ public class GameScreen extends Screen {
 
 	private DrawingSurface surface;
 	private Car p1,p2;
+	private ArrayList<Shape> obstacles;
 	
 	/**
 	 * Creates a new GameScreen that takes in the DrawingSurface
@@ -24,6 +28,8 @@ public class GameScreen extends Screen {
 	{
 		super();
 		this.surface = surface;
+		obstacles = new ArrayList<Shape>();
+		obstacles.add(new Rectangle(0,250,100,50));
 	}
 	
 	/**
@@ -46,19 +52,26 @@ public class GameScreen extends Screen {
 		p1.draw(surface);
 		p2.draw(surface);
 		
+		for (Shape s : obstacles) {
+			if (s instanceof Rectangle) {
+				Rectangle r = (Rectangle)s;
+				surface.rect(r.x,r.y,r.width,r.height);
+			}
+		}
+		
 		surface.popMatrix();
 		
 		if (surface.isPressed(KeyEvent.VK_LEFT))
-			p2.turn(-1);
+			p2.turn(-5);
 		if (surface.isPressed(KeyEvent.VK_RIGHT))
-			p2.turn(1);
+			p2.turn(5);
 		if (surface.isPressed(KeyEvent.VK_UP))
 			p2.accelerate();
 		if (surface.isPressed(KeyEvent.VK_DOWN))
 			p2.boost();
 		
 		
-		p2.act();
+		p2.act(obstacles);
 	}
 	
 }
