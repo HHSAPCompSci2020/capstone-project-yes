@@ -54,6 +54,8 @@ public class GameScreen extends Screen {
 			p2.turn(1);
 		if (surface.isPressed(KeyEvent.VK_UP))
 			p2.accelerate();
+		if (surface.isPressed(KeyEvent.VK_DOWN))
+			p2.boost();
 		
 		
 		p2.act();

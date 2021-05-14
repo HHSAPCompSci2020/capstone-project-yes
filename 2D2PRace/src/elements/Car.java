@@ -26,7 +26,7 @@ public class Car extends MovingImage {
 	
 	public void accelerate() {
 		if(speed <= 30 && speed >= -30)
-			speed += 1;
+			speed += 5;
 	}
 	
 	
@@ -35,7 +35,7 @@ public class Car extends MovingImage {
 	}
 	
 	public void boost() {
-		speed = 60;
+		speed = 100;
 	}
 	
 	public void shoot() {
@@ -47,10 +47,10 @@ public class Car extends MovingImage {
 		double xCoord = getX();
 		double yCoord = getY();
 		
-		//speed *= friction;
-		
 		double vy = speed * Math.sin(Math.toRadians(direction));
 		double vx = speed * Math.cos(Math.toRadians(direction));
+		
+		speed *= friction;
 		
 		if (Math.abs(speed) < .5)
 			speed = 0;
