@@ -36,6 +36,8 @@ public class GameScreen extends Screen {
 	 */
 	public void draw()
 	{
+		surface.pushMatrix();
+		
 		surface.background(255);
 		p1.draw(surface);
 		p2.draw(surface);
@@ -47,6 +49,7 @@ public class GameScreen extends Screen {
 		if (surface.isPressed(KeyEvent.VK_UP))
 			p2.accelerate();
 		
+		surface.popMatrix();
 	}
 	
 }

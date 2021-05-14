@@ -13,7 +13,7 @@ public class MenuScreen extends Screen {
 
 	private DrawingSurface surface;
 	
-	private Rectangle selection;
+	private Rectangle gameButton, howToPlayButton;
 	/**
 	 * Creates a new MenuScreen that takes in the DrawingSurface
 	 * @param surface DrawingSurface that will display the graphics
@@ -23,7 +23,8 @@ public class MenuScreen extends Screen {
 		super();
 		this.surface = surface;
 		
-		selection = new Rectangle(960/2-100,540/2-50,200,100);
+		gameButton = new Rectangle(960*3/4-100,540/2-50,200,100);
+		howToPlayButton = new Rectangle(960*1/4-100,540/2-50,200,100);
 	}
 	
 	/**
@@ -40,24 +41,34 @@ public class MenuScreen extends Screen {
 		
 		
 		surface.fill(255);
-		surface.rect(selection.x, selection.y, selection.width, selection.height, 10, 10, 10, 10);
+		surface.rect(gameButton.x, gameButton.y, gameButton.width, gameButton.height, 10, 10, 10, 10);
 		surface.fill(0);
-		String gameText = "Start";
-		w = surface.textWidth(gameText);
-		float h = surface.textWidth(gameText)/gameText.length();
-		surface.text(gameText, selection.x+selection.width/2-w/2, selection.y+selection.height/2+h/2);
+		String gameButtonText = "Start";
+		w = surface.textWidth(gameButtonText);
+		float h = surface.textWidth(gameButtonText)/gameButtonText.length();
+		surface.text(gameButtonText, gameButton.x+gameButton.width/2-w/2, gameButton.y+gameButton.height/2+h/2);
+		
+		surface.fill(255);
+		surface.rect(howToPlayButton.x, howToPlayButton.y, howToPlayButton.width, howToPlayButton.height, 10, 10, 10, 10);
+		surface.fill(0);
+		String howToPlayText = "How To Play";
+		w = surface.textWidth(howToPlayText);
+		h = surface.textWidth(howToPlayText)/howToPlayText.length();
+		surface.text(howToPlayText, howToPlayButton.x+howToPlayButton.width/2-w/2, howToPlayButton.y+howToPlayButton.height/2+h/2);
 		surface.popMatrix();
 	}
 	
 	/**
 	 * Checks when the mouse is pressed in the specified area
 	 * In this case, it would be when the mouse is pressed inside the start button
-	 * to change the screen to the MenuScreen
+	 * to change the screen to the GameScreen
 	 */
 	public void mousePressed() {
 		Point p = new Point(surface.mouseX,surface.mouseY);
-		if (selection.contains(p))
+		if (gameButton.contains(p))
 			surface.switchScreen(ScreenSwitcher.GAMESCREEN);
+		else if (howToPlayButton.contains(p))
+			surface.switchScreen(ScreenSwitcher.HOWTOPLAYSCREEN);
 	}
 	
 }
