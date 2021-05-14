@@ -16,6 +16,10 @@ public class GameScreen extends Screen {
 	private DrawingSurface surface;
 	private Car p1,p2;
 	
+	/**
+	 * Creates a new GameScreen that takes in the DrawingSurface
+	 * @param surface DrawingSurface that will display the graphics
+	 */
 	public GameScreen(DrawingSurface surface)
 	{
 		super();
@@ -23,7 +27,7 @@ public class GameScreen extends Screen {
 	}
 	
 	/**
-	 * 
+	 * Loads in the two cars
 	 */
 	public void setup()
 	{
@@ -32,7 +36,7 @@ public class GameScreen extends Screen {
 	}
 	
 	/**
-	 * 
+	 * Draws the game with the cars as well as updates them based on user required inputs
 	 */
 	public void draw()
 	{
