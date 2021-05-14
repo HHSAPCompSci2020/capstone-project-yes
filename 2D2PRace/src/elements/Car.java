@@ -19,7 +19,7 @@ public class Car extends MovingImage {
 	private static final int CAR_HEIGHT = 60;
 	
 	
-	private double speed, direction, friction;
+	private double speed, direction, friction, xVelocity,yVelocity;
 	private boolean onAWall;
 	private Projectile projectile;
 	
@@ -27,13 +27,15 @@ public class Car extends MovingImage {
 		super(img, x, y, CAR_WIDTH, CAR_HEIGHT);
 		speed = 0;
 		direction = 0;
-		friction *= 0.99;
+		xVelocity = 0;
+		yVelocity = 0;
+		friction = 0.85;
 		onAWall = false;
 	}
 	
 	public void accelerate() {
 		if(speed <= 30 && speed >= -30)
-			speed += 5;
+			speed += 2;
 	}
 	
 	
@@ -42,7 +44,7 @@ public class Car extends MovingImage {
 	}
 	
 	public void boost() {
-		speed = 100;
+		speed = 40;
 	}
 	
 	public void shoot() {
@@ -51,39 +53,43 @@ public class Car extends MovingImage {
 	}
 	
 	public void act(ArrayList<Shape> walls) {
+		yVelocity = speed * Math.sin(Math.toRadians(direction));
+		xVelocity = speed * Math.cos(Math.toRadians(direction));
+
+		speed *= friction;
+		
 		double xCoord = getX();
 		double yCoord = getY();
 		double width = getWidth();
 		double height = getHeight();
 
+		// ***********Y AXIS***********
 
-		speed *= friction;
-		double vy = speed * Math.sin(Math.toRadians(direction));
-		double yCoord2 = yCoord + vy;
+		double yCoord2 = yCoord + yVelocity;
 
-		Rectangle2D.Double strechY = new Rectangle2D.Double(xCoord,Math.min(yCoord,yCoord2),width,height+Math.abs(speed));
+		Rectangle2D.Double strechY = new Rectangle2D.Double(xCoord,Math.min(yCoord,yCoord2),width,height+Math.abs(yVelocity));
 
 		onAWall = false;
 
-		if (speed > 0) {
+		if (yVelocity > 0) {
 			Shape standingSurface = null;
 			for (Shape s : walls) {
 				if (s.intersects(strechY)) {
 					onAWall = true;
 					standingSurface = s;
-					speed = 0;
+					yVelocity = 0;
 				}
 			}
 			if (standingSurface != null) {
 				Rectangle r = standingSurface.getBounds();
 				yCoord2 = r.getY()-height;
 			}
-		} else if (speed < 0) {
+		} else if (yVelocity < 0) {
 			Shape headSurface = null;
 			for (Shape s : walls) {
 				if (s.intersects(strechY)) {
 					headSurface = s;
-					speed = 0;
+					yVelocity = 0;
 				}
 			}
 			if (headSurface != null) {
@@ -92,30 +98,30 @@ public class Car extends MovingImage {
 			}
 		}
 
+		// ***********X AXIS***********
 
-		double vx = speed * Math.cos(Math.toRadians(direction));
-		double xCoord2 = yCoord + vx;
+		double xCoord2 = xCoord + xVelocity;
 
-		Rectangle2D.Double strechX = new Rectangle2D.Double(Math.min(xCoord,xCoord2),yCoord2,width+Math.abs(speed),height);
+		Rectangle2D.Double strechX = new Rectangle2D.Double(Math.min(xCoord,xCoord2),yCoord2,width+Math.abs(xVelocity),height);
 
-		if (speed > 0) {
+		if (xVelocity > 0) {
 			Shape rightSurface = null;
 			for (Shape s : walls) {
 				if (s.intersects(strechX)) {
 					rightSurface = s;
-					speed = 0;
+					xVelocity = 0;
 				}
 			}
 			if (rightSurface != null) {
 				Rectangle r = rightSurface.getBounds();
 				xCoord2 = r.getX()-width;
 			}
-		} else if (speed < 0) {
+		} else if (xVelocity < 0) {
 			Shape leftSurface = null;
 			for (Shape s : walls) {
 				if (s.intersects(strechX)) {
 					leftSurface = s;
-					speed = 0;
+					xVelocity = 0;
 				}
 			}
 			if (leftSurface != null) {
@@ -125,7 +131,7 @@ public class Car extends MovingImage {
 		}
 
 
-		if (Math.abs(speed) < .5)
+		if (Math.abs(speed) < .000005)
 			speed = 0;
 
 		moveToLocation(xCoord2,yCoord2);

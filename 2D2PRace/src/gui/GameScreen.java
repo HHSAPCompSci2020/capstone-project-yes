@@ -37,7 +37,7 @@ public class GameScreen extends Screen {
 	 */
 	public void setup()
 	{
-		p1 = new Car(surface.loadImage("car1-1.png"),560,350);
+//		p1 = new Car(surface.loadImage("car1-1.png"),560,350);
 		p2 = new Car(surface.loadImage("car1-2.png"),500,350);
 	}
 	
@@ -49,7 +49,7 @@ public class GameScreen extends Screen {
 		surface.pushMatrix();
 		
 		surface.background(255);
-		p1.draw(surface);
+//		p1.draw(surface);
 		p2.draw(surface);
 		
 		for (Shape s : obstacles) {
