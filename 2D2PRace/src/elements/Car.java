@@ -5,6 +5,8 @@ import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
+import gui.GameScreen;
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
@@ -21,7 +23,6 @@ public class Car extends MovingImage {
 	
 	private double speed, direction, friction, xVelocity,yVelocity;
 	private boolean onAWall;
-	private Projectile projectile;
 	
 	public Car(PImage img, int x, int y) {
 		super(img, x, y, CAR_WIDTH, CAR_HEIGHT);
@@ -45,11 +46,6 @@ public class Car extends MovingImage {
 	
 	public void boost() {
 		speed = 40;
-	}
-	
-	public void shoot() {
-		projectile = new Projectile();
-		projectile.shoot(xVelocity*5,yVelocity*5);
 	}
 	
 	public void act(ArrayList<Shape> walls) {
@@ -137,7 +133,17 @@ public class Car extends MovingImage {
 		moveToLocation(xCoord2,yCoord2);
 	}
 	
+	public double getXVelocity()
+	{
+		return xVelocity;
+	}
 	
-	
-
+	public double getYVelocity()
+	{
+		return yVelocity;
+	}
+	public double getDirection()
+	{
+		return direction;
+	}
 }

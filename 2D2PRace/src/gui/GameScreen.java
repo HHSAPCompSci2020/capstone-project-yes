@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import elements.Car;
+import elements.Projectile;
 
 /**
  * Used by DrawingSurface to draw the specified screen, which is to show the 
@@ -19,6 +20,7 @@ public class GameScreen extends Screen {
 	private DrawingSurface surface;
 	private Car p1,p2;
 	private ArrayList<Shape> obstacles;
+	private ArrayList<Projectile> projectiles;
 	
 	/**
 	 * Creates a new GameScreen that takes in the DrawingSurface
@@ -36,6 +38,7 @@ public class GameScreen extends Screen {
 		obstacles.add(new Rectangle(0, 0, 25, 515));
 		obstacles.add(new Rectangle(935, 0, 25, 515));
 		
+		projectiles = new ArrayList<Projectile>();
 	}
 	
 	/**
@@ -45,6 +48,8 @@ public class GameScreen extends Screen {
 	{
 //		p1 = new Car(surface.loadImage("car1-1.png"),560,350);
 		p2 = new Car(surface.loadImage("car1-2.png"),500,350);
+		surface.loadImage("projectile.png");
+		
 	}
 	
 	/**
@@ -58,6 +63,14 @@ public class GameScreen extends Screen {
 //		p1.draw(surface);
 		p2.draw(surface);
 		
+		for(Projectile p : projectiles)
+		{
+			if (p instanceof Projectile)
+			{
+				p.draw(surface);
+			}
+		}
+		
 		for (Shape s : obstacles) {
 			if (s instanceof Rectangle) {
 				Rectangle r = (Rectangle)s;
@@ -67,6 +80,26 @@ public class GameScreen extends Screen {
 		
 		surface.popMatrix();
 		
+		p2.act(obstacles);
+		for(Projectile p : projectiles)
+		{
+			if (p instanceof Projectile)
+			{
+				p.act();
+			}
+		}
+		
+		if(projectiles.size() > 0)
+		{
+			for(int x = projectiles.size() - 1; x >= 0; x--)
+			{
+				if(projectiles.get(x).getLifespan() < 1)
+				{
+					projectiles.remove(x);
+				}
+			}
+		}
+		
 		if (surface.isPressed(KeyEvent.VK_LEFT))
 			p2.turn(-5);
 		if (surface.isPressed(KeyEvent.VK_RIGHT))
@@ -75,9 +108,16 @@ public class GameScreen extends Screen {
 			p2.accelerate();
 		if (surface.isPressed(KeyEvent.VK_DOWN))
 			p2.boost();
+		if (surface.isPressed((int)'.'))
+		{
+			System.out.println("shot");
+			Projectile p = new Projectile(surface.loadImage("projectile.png"),
+					(int)((p2.getCenterX()) + 40*Math.cos(Math.toRadians(p2.getDirection()))),
+					(int)(p2.getCenterY() + 40*Math.sin(Math.toRadians(p2.getDirection()))),
+					(int)(p2.getXVelocity()*5),(int)(p2.getYVelocity()*5));
+			projectiles.add(p);
+		}		
 		
-		
-		p2.act(obstacles);
 	}
-	
+
 }

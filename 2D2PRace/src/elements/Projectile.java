@@ -1,5 +1,7 @@
 package elements;
 
+import gui.GameScreen;
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
@@ -8,10 +10,10 @@ import processing.core.PImage;
  * @author Alex Lan
  * @version 5/7/21
  */
-public class Projectile extends MovingImage{
+public class Projectile extends MovingImage {
 	
-	public static final int PROJ_WIDTH = 5;
-	public static final int PROJ_HEIGHT = 5;
+	public static final int PROJ_WIDTH = 10;
+	public static final int PROJ_HEIGHT = 10;
 	
 	private double xv, yv;
 	private int lifespan;
@@ -29,13 +31,13 @@ public class Projectile extends MovingImage{
 	}
 	
 	public void act() {
-		if(lifespan < 1)
-		{
-//			removeSelf(this);
-		}
-		
 		moveToLocation(getX()+xv,getY()+yv);
 		lifespan--;
+	}
+	
+	public int getLifespan()
+	{
+		return lifespan;
 	}
 	
 
