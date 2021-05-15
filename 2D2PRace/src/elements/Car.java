@@ -49,7 +49,7 @@ public class Car extends MovingImage {
 	
 	public void shoot() {
 		projectile = new Projectile();
-		projectile.shoot();
+		projectile.shoot(xVelocity*5,yVelocity*5);
 	}
 	
 	public void act(ArrayList<Shape> walls) {
