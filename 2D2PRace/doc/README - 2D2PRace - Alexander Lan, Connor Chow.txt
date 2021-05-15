@@ -101,8 +101,8 @@ Class List:
 * Elements
    * Car: A 2D car being used to drive around
    * Checkpoint: An object that detects when a car has collided with it (to make sure the cars goes the correct way to earn a point for it’s lap)
-   * StartFinishLine: extends Checkpoint, adds points to player 1/player 2 when their corresponding car crosses this object
    * Projectile: object fired from the car to sabotage other cars
+   * MovingImage: A class that represents a moving image
 * GUI
    * Main - creates a new game
    * IntroScreen - Holds graphics for intro screen
@@ -110,27 +110,11 @@ Class List:
    * CustomizationScreen - Holds graphics for car customization screen
    * PauseScreen - Holds graphics for pause screen
    * HowToPlayScreen - Holds graphics for screen on how to play the game
-   * GameScreen?
+   * GameScreen  Holds graphics for the game itself
 Credits:
-Connor - GUI classes
-Alexander - Element classes
+Connor - Main, Intro Screen, MenuScreen, HowToPlayScreen, GameScreen, Projectile
+Alexander - Car, CheckPoint, MovingImage
 Used ScreenChanger and AnimationDemoProcessing processing code from Mr. Shelby
- Car Images from https://opengameart.org/content/top-down-view-cars-and-trucks-racing-sprites 
+Car Images from https://opengameart.org/content/top-down-view-cars-and-trucks-racing-sprites 
+Circle Projectile from https://static.thenounproject.com/png/98948-200.png 
 ________________
-
-
-
-
-Other possible Ideas:
-* FPS practice game
-* Water checker (need sensor & arduino)
-* Laser Duel
-* Asteroids
-* Catch the Balls of some kind of physics game
-* Race car game
-* Simplistic Computer Reminder App
-* Catch the Imposter
-* Find the Imposter
-* Fidget App
-* Custom Board Game
-*

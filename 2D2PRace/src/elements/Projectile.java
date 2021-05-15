@@ -8,7 +8,7 @@ import processing.core.PImage;
  * Used to create the projectile used by the car to sabotage the other car during the game
  * 
  * @author Alex Lan
- * @version 5/7/21
+ * @version 5/14/21
  */
 public class Projectile extends MovingImage {
 	
@@ -18,6 +18,15 @@ public class Projectile extends MovingImage {
 	private double xv, yv;
 	private int lifespan;
 	
+	/**
+	 * Project constructor with a lifespan int set to 60 (approx. 1 second).
+	 * 
+	 * @param img image file that the car will be using
+	 * @param x x-coordinate of the projectile
+	 * @param y y-coordinate of the projectile
+	 * @param xv x-velocity of the projectile
+	 * @param yv y-velocity of the projectile
+	 */
 	public Projectile(PImage img, int x, int y, int xv, int yv) {
 		super(img, x, y, PROJ_WIDTH, PROJ_HEIGHT);
 		
@@ -26,15 +35,19 @@ public class Projectile extends MovingImage {
 		lifespan = 60;
 	}
 	
-	public void shoot() {
-		
-	}
-	
+	/**
+	 * Changes the location of the Projectile object.
+	 * Also lowers the lifespan of the projectile.
+	 */
 	public void act() {
 		moveToLocation(getX()+xv,getY()+yv);
 		lifespan--;
 	}
 	
+	/**
+	 * Returns the current lifespan left of the projectile.
+	 * @return integer for the lifespan of the Projectile object
+	 */
 	public int getLifespan()
 	{
 		return lifespan;

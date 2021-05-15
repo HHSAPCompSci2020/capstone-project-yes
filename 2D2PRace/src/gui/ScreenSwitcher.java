@@ -5,7 +5,7 @@ package gui;
  * as well as a method to switch between the different screens
  * 
  * @author Connor Chow
- * @version 5/7/21
+ * @version 5/14/21
  */
 public interface ScreenSwitcher {
 	public static final int INTROSCREEN = 0;

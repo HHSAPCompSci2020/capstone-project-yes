@@ -7,7 +7,7 @@ import java.awt.Rectangle;
  * Used by DrawingSurface to draw the specified screen, which is to show the player a visual of how the game functions
  * 
  * @author Connor Chow
- * @version 5/7/21
+ * @version 5/14/21
  */
 public class HowToPlayScreen extends Screen {
 
@@ -61,7 +61,7 @@ public class HowToPlayScreen extends Screen {
 	
 	/**
 	 * Checks when the mouse is pressed in the specified area
-	 * In this case, it would be when the mouse is pressed inside the start button
+	 * In this case, it would be when the mouse is pressed inside the back button
 	 * to change the screen to the MenuScreen
 	 */
 	public void mousePressed() {

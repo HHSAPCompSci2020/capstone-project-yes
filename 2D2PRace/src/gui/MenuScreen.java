@@ -7,7 +7,7 @@ import java.awt.Rectangle;
  * player the menu that can access the game as well as different options
  * 
  * @author Connor Chow
- * @version 5/7/21
+ * @version 5/14/21
  */
 public class MenuScreen extends Screen {
 

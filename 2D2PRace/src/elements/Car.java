@@ -10,20 +10,27 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * Used to create the 2D car the User will control to play the game
+ * Used to create the 2D car the User will control to play the game.
+ * Uses a custom images that moves.
  * 
  * @author Alex Lan
- * @version 5/7/21
+ * @version 5/14/21
  */
 public class Car extends MovingImage {
 	
 	private static final int CAR_WIDTH = 45;
 	private static final int CAR_HEIGHT = 60;
 	
-	
-	private double speed, direction, friction, xVelocity,yVelocity;
+	private double speed, direction, friction, xVelocity, yVelocity;
 	private boolean onAWall;
 	
+	/**
+	 * Car constructor
+	 * 
+	 * @param img image file that the car will be using
+	 * @param x x-coordinate
+	 * @param y y-coordinate
+	 */
 	public Car(PImage img, int x, int y) {
 		super(img, x, y, CAR_WIDTH, CAR_HEIGHT);
 		speed = 0;
@@ -34,20 +41,36 @@ public class Car extends MovingImage {
 		onAWall = false;
 	}
 	
+	/**
+	 * Accelerates the car by adding to the speed of the car
+	 */
 	public void accelerate() {
 		if(speed <= 30 && speed >= -30)
 			speed += 2;
 	}
 	
-	
+	/**
+	 * Turns the car by a specified angle
+	 * @param turn angle the car will turn (in degrees)
+	 */
 	public void turn(int turn) {
 		direction += turn;
 	}
 	
+	/**
+	 * Boosts the car in the direction the car is facing
+	 */
 	public void boost() {
 		speed = 40;
 	}
 	
+	/**
+	 * Calculates the velocity of the car in the x and y direction based on the car's direction it is facing (in degrees),
+	 * as well as the speed (based on how much the user accelerates).
+	 * The friction to the ground is also calculated, as well as the collision with the wall objects.
+	 * These all are then used to update the position of the car.
+	 * @param walls ArrayList of walls that the car cannot pass through
+	 */
 	public void act(ArrayList<Shape> walls) {
 		yVelocity = speed * Math.sin(Math.toRadians(direction));
 		xVelocity = speed * Math.cos(Math.toRadians(direction));
@@ -133,15 +156,28 @@ public class Car extends MovingImage {
 		moveToLocation(xCoord2,yCoord2);
 	}
 	
+	/**
+	 * Gets the velocity of the car on the x axis
+	 * @return the specified car object's x velocity
+	 */
 	public double getXVelocity()
 	{
 		return xVelocity;
 	}
 	
+	/**
+	 * Gets the velocity of the car on the y axis
+	 * @return the specified car object's y velocity
+	 */
 	public double getYVelocity()
 	{
 		return yVelocity;
 	}
+	
+	/**
+	 * Gets the direction of the car (in degrees)
+	 * @return the specified car object's angle (in degrees)
+	 */
 	public double getDirection()
 	{
 		return direction;

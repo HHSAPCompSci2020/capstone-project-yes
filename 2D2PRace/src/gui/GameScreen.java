@@ -13,7 +13,7 @@ import elements.Projectile;
  * player the game interface
  * 
  * @author Connor Chow
- * @version 5/7/21
+ * @version 5/14/21
  */
 public class GameScreen extends Screen {
 
@@ -42,7 +42,7 @@ public class GameScreen extends Screen {
 	}
 	
 	/**
-	 * Loads in the two cars
+	 * Loads in the two cars and projectile image
 	 */
 	public void setup()
 	{
@@ -53,7 +53,10 @@ public class GameScreen extends Screen {
 	}
 	
 	/**
-	 * Draws the game with the cars as well as updates them based on user required inputs
+	 * Draws the game with the cars, boundaries, and checkpoints, 
+	 * as well as updates them based on user required inputs.
+	 * Also adds in projectiles based on the user inputting the specified keystroke.
+	 * Deletes the Projectile object when the Projectile's lifespan is 0.
 	 */
 	public void draw()
 	{
