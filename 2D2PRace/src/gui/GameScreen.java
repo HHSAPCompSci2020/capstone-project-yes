@@ -29,7 +29,13 @@ public class GameScreen extends Screen {
 		super();
 		this.surface = surface;
 		obstacles = new ArrayList<Shape>();
-		obstacles.add(new Rectangle(0,250,100,50));
+		obstacles.add(new Rectangle(250,250,100,50));
+		obstacles.add(new Rectangle(550,250,100,50));
+		obstacles.add(new Rectangle(0, 0, 960, 25));
+		obstacles.add(new Rectangle(0, 490, 960, 50));
+		obstacles.add(new Rectangle(0, 0, 25, 515));
+		obstacles.add(new Rectangle(935, 0, 25, 515));
+		
 	}
 	
 	/**
