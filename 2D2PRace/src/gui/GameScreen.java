@@ -97,7 +97,19 @@ public class GameScreen extends Screen {
 		{
 			for(int x = projectiles.size() - 1; x >= 0; x--)
 			{
-				if(projectiles.get(x).getLifespan() < 1)
+				if(projectiles.get(x).intersects(p1) || projectiles.get(x).intersects(p2))
+				{	
+					if(projectiles.get(x).intersects(p1))
+					{
+						p1.deaccelerate();
+					}
+					if(projectiles.get(x).intersects(p2))
+					{
+						p2.deaccelerate();
+					}
+					projectiles.remove(x);
+				}
+				else if(projectiles.get(x).getLifespan() < 1)
 				{
 					projectiles.remove(x);
 				}

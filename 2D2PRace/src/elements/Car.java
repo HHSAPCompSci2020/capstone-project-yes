@@ -55,6 +55,15 @@ public class Car extends MovingImage {
 	}
 	
 	/**
+	 * Deaccelerates the car by subtracting to the speed of the car
+	 */
+	public void deaccelerate()
+	{
+		if(speed <= 30 && speed >= -30)
+			speed -= 2;
+	}
+	
+	/**
 	 * Turns the car by a specified angle
 	 * @param turn angle the car will turn (in degrees)
 	 */
