@@ -118,8 +118,7 @@ public class GameScreen extends Screen {
 			Projectile p = new Projectile(surface.loadImage("projectile.png"),
 					(int)((p1.getCenterX()) + 40*Math.cos(Math.toRadians(p1.getDirection()))),
 					(int)(p1.getCenterY() + 40*Math.sin(Math.toRadians(p1.getDirection()))),
-					(int)(p1.getXVelocity()*5),(int)(p1.getYVelocity()*5));
-			projectiles.add(p);
+					(int)(40*Math.cos(Math.toRadians(p1.getDirection()))),(int)(40*Math.sin(Math.toRadians(p1.getDirection()))));			projectiles.add(p);
 		}
 		if (surface.isPressed(KeyEvent.VK_LEFT))
 			p2.turn(-5);
@@ -135,7 +134,7 @@ public class GameScreen extends Screen {
 			Projectile p = new Projectile(surface.loadImage("projectile.png"),
 					(int)((p2.getCenterX()) + 40*Math.cos(Math.toRadians(p2.getDirection()))),
 					(int)(p2.getCenterY() + 40*Math.sin(Math.toRadians(p2.getDirection()))),
-					(int)(p2.getXVelocity()*5),(int)(p2.getYVelocity()*5));
+					(int)(40*Math.cos(Math.toRadians(p2.getDirection()))),(int)(40*Math.sin(Math.toRadians(p2.getDirection()))));
 			projectiles.add(p);
 		}		
 		
