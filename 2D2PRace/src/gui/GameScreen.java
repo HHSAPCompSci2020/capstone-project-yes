@@ -13,7 +13,7 @@ import elements.Projectile;
  * player the game interface
  * 
  * @author Connor Chow
- * @version 5/14/21
+ * @version 5/16/21
  */
 public class GameScreen extends Screen {
 
