@@ -55,6 +55,19 @@ public class MovingImage extends Rectangle2D.Double {
 //		y = Math.max(0,y);
 //	}
 	
+	public void rotate(double degrees) {
+		double xCenter = x + width/2;
+		double yCenter = y + height/2;
+		
+		double temp = width;
+		super.width = height;
+		super.height = temp;
+		
+		super.x = xCenter - width/2;
+		super.y = yCenter - height/2;
+	}
+	
+	
 	/**
 	 * Draws the moving image object on the specified PApplet
 	 * @param g PApplet to draw the MovingImage object onto
