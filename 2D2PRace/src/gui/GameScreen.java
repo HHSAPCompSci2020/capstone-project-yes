@@ -136,7 +136,9 @@ public class GameScreen extends Screen {
 					(int)(p2.getCenterY() + 40*Math.sin(Math.toRadians(p2.getDirection()))),
 					(int)(40*Math.cos(Math.toRadians(p2.getDirection()))),(int)(40*Math.sin(Math.toRadians(p2.getDirection()))));
 			projectiles.add(p);
-		}		
+		}
+		
+		//Add method when car crosses checkpoint
 		
 	}
 
