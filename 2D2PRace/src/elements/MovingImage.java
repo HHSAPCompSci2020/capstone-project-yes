@@ -14,7 +14,7 @@ import processing.core.PImage;
 public class MovingImage extends Rectangle2D.Double {
 	
 	private PImage image;
-	
+
 	/**
 	 * MovingImage constructor
 	 * @param img specified image imported from the project files
@@ -54,7 +54,6 @@ public class MovingImage extends Rectangle2D.Double {
 //		x = Math.max(0,x);
 //		y = Math.max(0,y);
 //	}
-	
 	
 	/**
 	 * Draws the moving image object on the specified PApplet

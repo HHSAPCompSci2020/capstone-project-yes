@@ -154,7 +154,8 @@ public class Car extends MovingImage {
 			}
 		}
 
-
+		
+		
 		if (Math.abs(speed) < .000005)
 			speed = 0;
 
