@@ -15,7 +15,7 @@ import processing.core.PImage;
  * Uses a custom images that moves.
  * 
  * @author Alex Lan
- * @version 5/14/21
+ * @version 5/16/21
  */
 public class Car extends MovingImage {
 	
@@ -23,6 +23,7 @@ public class Car extends MovingImage {
 	private static final int CAR_HEIGHT = 60;
 	
 	private double speed, direction, friction, xVelocity, yVelocity;
+	private int checkpoint;
 	private boolean onAWall;
 	
 	/**
@@ -39,6 +40,9 @@ public class Car extends MovingImage {
 		xVelocity = 0;
 		yVelocity = 0;
 		friction = 0.85;
+		
+		checkpoint = 0;
+		
 		onAWall = false;
 	}
 	
@@ -182,5 +186,10 @@ public class Car extends MovingImage {
 	public double getDirection()
 	{
 		return direction;
+	}
+	
+	public int getCheckpoint()
+	{
+		return checkpoint;
 	}
 }
