@@ -46,7 +46,7 @@ public class GameScreen extends Screen {
 	 */
 	public void setup()
 	{
-//		p1 = new Car(surface.loadImage("car1-1.png"),560,350);
+		p1 = new Car(surface.loadImage("car1-1.png"),560,350);
 		p2 = new Car(surface.loadImage("car1-2.png"),500,350);
 		surface.loadImage("projectile.png");
 		
@@ -63,7 +63,7 @@ public class GameScreen extends Screen {
 		surface.pushMatrix();
 		
 		surface.background(255);
-//		p1.draw(surface);
+		p1.draw(surface);
 		p2.draw(surface);
 		
 		for(Projectile p : projectiles)
@@ -83,6 +83,7 @@ public class GameScreen extends Screen {
 		
 		surface.popMatrix();
 		
+		p1.act(obstacles);
 		p2.act(obstacles);
 		for(Projectile p : projectiles)
 		{
@@ -103,17 +104,34 @@ public class GameScreen extends Screen {
 			}
 		}
 		
+		if (surface.isPressed(KeyEvent.VK_A))
+			p1.turn(-5);
+		if (surface.isPressed(KeyEvent.VK_D))
+			p1.turn(5);
+		if (surface.isPressed(KeyEvent.VK_W))
+			p1.accelerate();
+		if (surface.isPressed(KeyEvent.VK_V))
+			p1.boost();
+		if (surface.isPressed(KeyEvent.VK_C))
+		{
+			System.out.println("p1 shot");
+			Projectile p = new Projectile(surface.loadImage("projectile.png"),
+					(int)((p1.getCenterX()) + 40*Math.cos(Math.toRadians(p1.getDirection()))),
+					(int)(p1.getCenterY() + 40*Math.sin(Math.toRadians(p1.getDirection()))),
+					(int)(p1.getXVelocity()*5),(int)(p1.getYVelocity()*5));
+			projectiles.add(p);
+		}
 		if (surface.isPressed(KeyEvent.VK_LEFT))
 			p2.turn(-5);
 		if (surface.isPressed(KeyEvent.VK_RIGHT))
 			p2.turn(5);
 		if (surface.isPressed(KeyEvent.VK_UP))
 			p2.accelerate();
-		if (surface.isPressed(KeyEvent.VK_DOWN))
+		if (surface.isPressed(KeyEvent.VK_SLASH))
 			p2.boost();
-		if (surface.isPressed((int)'.'))
+		if (surface.isPressed(KeyEvent.VK_PERIOD))
 		{
-			System.out.println("shot");
+			System.out.println("p2 shot");
 			Projectile p = new Projectile(surface.loadImage("projectile.png"),
 					(int)((p2.getCenterX()) + 40*Math.cos(Math.toRadians(p2.getDirection()))),
 					(int)(p2.getCenterY() + 40*Math.sin(Math.toRadians(p2.getDirection()))),
