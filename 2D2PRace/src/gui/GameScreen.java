@@ -1,11 +1,13 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import elements.Car;
+import elements.Checkpoint;
 import elements.Projectile;
 
 /**
@@ -21,6 +23,8 @@ public class GameScreen extends Screen {
 	private Car p1,p2;
 	private ArrayList<Shape> obstacles;
 	private ArrayList<Projectile> projectiles;
+	private ArrayList<Checkpoint> checkpoints;
+	private int p1Score, p2Score, win;
 	
 	/**
 	 * Creates a new GameScreen that takes in the DrawingSurface
@@ -30,6 +34,10 @@ public class GameScreen extends Screen {
 	{
 		super();
 		this.surface = surface;
+		p1Score = 0;
+		p2Score = 0;
+		win = 0;
+		
 		obstacles = new ArrayList<Shape>();
 		obstacles.add(new Rectangle(250,250,100,50));
 		obstacles.add(new Rectangle(550,250,100,50));
@@ -38,6 +46,12 @@ public class GameScreen extends Screen {
 		obstacles.add(new Rectangle(0, 0, 25, 515));
 		obstacles.add(new Rectangle(935, 0, 25, 515));
 		
+		checkpoints = new ArrayList<Checkpoint>();
+		checkpoints.add(new Checkpoint(new Color(255,246,3),275,300,50,300,0));
+		checkpoints.add(new Checkpoint(new Color(255,255,255),575,300,50,300,1));
+		checkpoints.add(new Checkpoint(new Color(255,255,255),575,0,50,300,2));
+		checkpoints.add(new Checkpoint(new Color(255,255,255),275,0,50,300,3));
+
 		projectiles = new ArrayList<Projectile>();
 	}
 	
@@ -46,10 +60,10 @@ public class GameScreen extends Screen {
 	 */
 	public void setup()
 	{
-		p1 = new Car(surface.loadImage("car1-1.png"),560,350);
-		p2 = new Car(surface.loadImage("car1-2.png"),500,350);
+		p1 = new Car(surface.loadImage("car1-1.png"),225,340);
+		p2 = new Car(surface.loadImage("car1-2.png"),225,400);
 		surface.loadImage("projectile.png");
-		
+
 	}
 	
 	/**
@@ -63,6 +77,15 @@ public class GameScreen extends Screen {
 		surface.pushMatrix();
 		
 		surface.background(255);
+		
+		for(Checkpoint c : checkpoints)
+		{
+			if(c instanceof Checkpoint)
+			{
+				c.draw(surface);
+			}
+		}
+		
 		p1.draw(surface);
 		p2.draw(surface);
 		
@@ -80,6 +103,10 @@ public class GameScreen extends Screen {
 				surface.rect(r.x,r.y,r.width,r.height);
 			}
 		}
+		
+		String scoreBoard = "Scores:\nP1: " + p1Score + ", P2: " + p2Score
+				+ "\nP1C: " + p1.getCheckpoint() + ", P2C: " + p2.getCheckpoint();
+		surface.text(scoreBoard, surface.width/2 - 20, surface.height/2 + 20);
 		
 		surface.popMatrix();
 		
@@ -115,43 +142,158 @@ public class GameScreen extends Screen {
 				}
 			}
 		}
-		
-		if (surface.isPressed(KeyEvent.VK_A))
-			p1.turn(-5);
-		if (surface.isPressed(KeyEvent.VK_D))
-			p1.turn(5);
-		if (surface.isPressed(KeyEvent.VK_W))
-			p1.accelerate();
-		if (surface.isPressed(KeyEvent.VK_V))
-			p1.boost();
-		if (surface.isPressed(KeyEvent.VK_C))
+
+		//Method when car crosses checkpoint
+		for(Checkpoint c : checkpoints)
 		{
-			System.out.println("p1 shot");
-			Projectile p = new Projectile(surface.loadImage("projectile.png"),
-					(int)((p1.getCenterX()) + 40*Math.cos(Math.toRadians(p1.getDirection()))),
-					(int)(p1.getCenterY() + 40*Math.sin(Math.toRadians(p1.getDirection()))),
-					(int)(40*Math.cos(Math.toRadians(p1.getDirection()))),(int)(40*Math.sin(Math.toRadians(p1.getDirection()))));			projectiles.add(p);
+			if(c instanceof Checkpoint)
+			{
+				if(c.getNum() != 0)
+				{
+					if(p1.intersects(c) && p2.intersects(c))
+					{
+						c.setColor(new Color(224,224,224));
+						if(p1.getCheckpoint() == c.getNum() - 1)
+						{
+							p1.setCheckpoint(c.getNum());
+						}
+						if(p2.getCheckpoint() == c.getNum() - 1)
+						{
+							p2.setCheckpoint(c.getNum());
+						}
+					}
+					else if(p1.intersects(c))
+					{
+						c.setColor(new Color(252, 240, 3));
+						if(p1.getCheckpoint() == c.getNum() - 1)
+						{
+							p1.setCheckpoint(c.getNum());
+						}
+					}
+					else if(p2.intersects(c))
+					{
+						c.setColor(new Color(53, 252, 3));
+						if(p2.getCheckpoint() == c.getNum() - 1)
+						{
+							p2.setCheckpoint(c.getNum());
+						}
+					}
+					else
+					{
+						c.setColor(new Color(255,255,255));
+					}
+					
+					
+				}
+				else
+				{
+					if(p1.intersects(c) && p2.intersects(c))
+					{
+						c.setColor(new Color(255, 0, 0));
+						if(p1.getCheckpoint() == 3)
+						{
+							p1.setCheckpoint(c.getNum());
+							p1Score++;
+						}
+						if(p2.getCheckpoint() == 3)
+						{
+							p2.setCheckpoint(c.getNum());
+							p2Score++;
+						}
+					}
+					else if(p1.intersects(c))
+					{
+						c.setColor(new Color(252, 240, 3));
+						if(p1.getCheckpoint() == 3)
+						{
+							p1.setCheckpoint(c.getNum());
+							p1Score++;
+						}
+					}
+					else if(p2.intersects(c))
+					{
+						c.setColor(new Color(53, 252, 3));
+						if(p2.getCheckpoint() == 3)
+						{
+							p2.setCheckpoint(c.getNum());
+							p2Score++;
+						}
+					}
+					else
+					{
+						c.setColor(new Color(224,224,224));
+					}
+				}
+			}
 		}
-		if (surface.isPressed(KeyEvent.VK_LEFT))
-			p2.turn(-5);
-		if (surface.isPressed(KeyEvent.VK_RIGHT))
-			p2.turn(5);
-		if (surface.isPressed(KeyEvent.VK_UP))
-			p2.accelerate();
-		if (surface.isPressed(KeyEvent.VK_SLASH))
-			p2.boost();
-		if (surface.isPressed(KeyEvent.VK_PERIOD))
+		
+		
+		if(win == 0)
 		{
-			System.out.println("p2 shot");
-			Projectile p = new Projectile(surface.loadImage("projectile.png"),
-					(int)((p2.getCenterX()) + 40*Math.cos(Math.toRadians(p2.getDirection()))),
-					(int)(p2.getCenterY() + 40*Math.sin(Math.toRadians(p2.getDirection()))),
-					(int)(40*Math.cos(Math.toRadians(p2.getDirection()))),(int)(40*Math.sin(Math.toRadians(p2.getDirection()))));
-			projectiles.add(p);
+			if (surface.isPressed(KeyEvent.VK_A))
+				p1.turn(-5);
+			if (surface.isPressed(KeyEvent.VK_D))
+				p1.turn(5);
+			if (surface.isPressed(KeyEvent.VK_W))
+				p1.accelerate();
+			if (surface.isPressed(KeyEvent.VK_V))
+				p1.boost();
+			if (surface.isPressed(KeyEvent.VK_C))
+			{
+				//System.out.println("p1 shot");
+				Projectile p = new Projectile(surface.loadImage("projectile.png"),
+						(int)((p1.getCenterX()) + 40*Math.cos(Math.toRadians(p1.getDirection()))),
+						(int)(p1.getCenterY() + 40*Math.sin(Math.toRadians(p1.getDirection()))),
+						(int)(40*Math.cos(Math.toRadians(p1.getDirection()))),(int)(40*Math.sin(Math.toRadians(p1.getDirection()))));			
+				projectiles.add(p);
+			}
+			if (surface.isPressed(KeyEvent.VK_LEFT))
+				p2.turn(-5);
+			if (surface.isPressed(KeyEvent.VK_RIGHT))
+				p2.turn(5);
+			if (surface.isPressed(KeyEvent.VK_UP))
+				p2.accelerate();
+			if (surface.isPressed(KeyEvent.VK_SLASH))
+				p2.boost();
+			if (surface.isPressed(KeyEvent.VK_PERIOD))
+			{
+				//System.out.println("p2 shot");
+				Projectile p = new Projectile(surface.loadImage("projectile.png"),
+						(int)((p2.getCenterX()) + 40*Math.cos(Math.toRadians(p2.getDirection()))),
+						(int)(p2.getCenterY() + 40*Math.sin(Math.toRadians(p2.getDirection()))),
+						(int)(40*Math.cos(Math.toRadians(p2.getDirection()))),(int)(40*Math.sin(Math.toRadians(p2.getDirection()))));
+				projectiles.add(p);
+			}	
+			if(p1Score >= 5)
+			{
+				win = 1;
+				p1.setCheckpoint(0);
+				p2.setCheckpoint(0);
+			}
+			else if(p2Score >= 5)
+			{
+				win = 2;
+				p1.setCheckpoint(0);
+				p2.setCheckpoint(0);
+			}
 		}
-		
-		//Add method when car crosses checkpoint
-		
+		else
+		{
+			if(win == 1)
+			{
+				surface.push();
+				surface.fill(255,0,0);
+				surface.text("P1 WINS", surface.width/2, surface.height*2/8);
+				surface.pop();
+			}
+			else if(win == 2)
+			{
+				surface.push();
+				surface.fill(255,0,0);
+				surface.text("P2 WINS", surface.width/2, surface.height*2/8);
+				surface.pop();
+			}
+		}
 	}
 
 }

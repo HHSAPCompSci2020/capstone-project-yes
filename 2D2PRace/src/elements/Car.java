@@ -202,4 +202,9 @@ public class Car extends MovingImage {
 	{
 		return checkpoint;
 	}
+
+	public void setCheckpoint(int x)
+	{
+		checkpoint = x;
+	}
 }
