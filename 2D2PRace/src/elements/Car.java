@@ -156,7 +156,7 @@ public class Car extends MovingImage {
 	 * These all are then used to update the position of the car.
 	 * @param walls ArrayList of walls that the car cannot pass through
 	 */
-	public void act(ArrayList<Shape> walls) {
+	public void act(ArrayList<Shape> walls, Car c) {
 		yVelocity = speed * Math.sin(Math.toRadians(direction));
 		xVelocity = speed * Math.cos(Math.toRadians(direction));
 
@@ -184,6 +184,11 @@ public class Car extends MovingImage {
 					yVelocity = 0;
 				}
 			}
+			if (c.intersects(strechY)) {
+				onAWall = true;
+				standingSurface = c;
+				yVelocity = 0;
+			}
 			if (standingSurface != null) {
 				Rectangle r = standingSurface.getBounds();
 				yCoord2 = r.getY()-height;
@@ -195,6 +200,10 @@ public class Car extends MovingImage {
 					headSurface = s;
 					yVelocity = 0;
 				}
+			}
+			if (c.intersects(strechY)) {
+				headSurface = c;
+				yVelocity = 0;
 			}
 			if (headSurface != null) {
 				Rectangle r = headSurface.getBounds();
@@ -216,6 +225,10 @@ public class Car extends MovingImage {
 					xVelocity = 0;
 				}
 			}
+			if (c.intersects(strechX)) {
+				rightSurface = c;
+				xVelocity = 0;
+			}
 			if (rightSurface != null) {
 				Rectangle r = rightSurface.getBounds();
 				xCoord2 = r.getX()-width;
@@ -227,6 +240,10 @@ public class Car extends MovingImage {
 					leftSurface = s;
 					xVelocity = 0;
 				}
+			}
+			if (c.intersects(strechX)) {
+				leftSurface = c;
+				xVelocity = 0;
 			}
 			if (leftSurface != null) {
 				Rectangle r = leftSurface.getBounds();

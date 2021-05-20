@@ -135,8 +135,8 @@ public class GameScreen extends Screen {
 		
 		surface.popMatrix();
 		
-		p1.act(obstacles);
-		p2.act(obstacles);
+		p1.act(obstacles, p2);
+		p2.act(obstacles, p1);
 		for(Projectile p : projectiles)
 		{
 			if (p instanceof Projectile)
