@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.event.KeyEvent;
@@ -28,6 +29,8 @@ public class GameScreen extends Screen {
 	private ArrayList<PImage> p1Images, p2Images, projImages;
 	private int p1Score, p2Score, win;
 	
+	private Rectangle returnButton;
+
 	/**
 	 * Creates a new GameScreen that takes in the DrawingSurface
 	 * @param surface DrawingSurface that will display the graphics
@@ -59,6 +62,8 @@ public class GameScreen extends Screen {
 		checkpoints.add(new Checkpoint(new Color(255,255,255),275,0,50,300,3));
 		
 		projectiles = new ArrayList<Projectile>();
+		
+		returnButton = new Rectangle(960/2-100,540*7/10-50,200,100);
 	}
 	
 	/**
@@ -129,8 +134,8 @@ public class GameScreen extends Screen {
 			}
 		}
 		
-		String scoreBoard = "Scores:\nP1: " + p1Score + ", P2: " + p2Score
-				+ "\nP1C: " + p1.getCheckpoint() + ", P2C: " + p2.getCheckpoint();
+		String scoreBoard = "Scores:\nP1: " + p1Score + ", P1C: " + p1.getCheckpoint() 
+							+ "\nP2: " + p2Score + ", P2C: " + p2.getCheckpoint();
 		surface.text(scoreBoard, surface.width/2 - 20, surface.height/2 + 20);
 		
 		surface.popMatrix();
@@ -331,8 +336,18 @@ public class GameScreen extends Screen {
 			if(win == 1)
 			{
 				surface.push();
+				
 				surface.fill(255,0,0);
 				surface.text("P1 WINS", surface.width/2, surface.height*2/8);
+				
+				surface.fill(255);
+				surface.rect(returnButton.x, returnButton.y, returnButton.width, returnButton.height, 10, 10, 10, 10);
+				surface.fill(0);
+				String buttonText = "< Back >";
+				float w = surface.textWidth(buttonText);
+				float h = surface.textWidth(buttonText)/buttonText.length();
+				surface.text(buttonText, returnButton.x+returnButton.width/2-w/2, returnButton.y+returnButton.height/2+h/2);
+				
 				surface.pop();
 			}
 			else if(win == 2)
@@ -340,6 +355,15 @@ public class GameScreen extends Screen {
 				surface.push();
 				surface.fill(255,0,0);
 				surface.text("P2 WINS", surface.width/2, surface.height*2/8);
+				
+				surface.fill(255);
+				surface.rect(returnButton.x, returnButton.y, returnButton.width, returnButton.height, 10, 10, 10, 10);
+				surface.fill(0);
+				String buttonText = "< Back >";
+				float w = surface.textWidth(buttonText);
+				float h = surface.textWidth(buttonText)/buttonText.length();
+				surface.text(buttonText, returnButton.x+returnButton.width/2-w/2, returnButton.y+returnButton.height/2+h/2);
+				
 				surface.pop();
 			}
 		}
@@ -357,6 +381,11 @@ public class GameScreen extends Screen {
 		surface.popMatrix();
 	}
 	*/
-	
+	public void mousePressed() {
+		Point p = new Point(surface.mouseX,surface.mouseY);
+		if (returnButton.contains(p))
+			if(win != 0)
+				surface.switchScreen(ScreenSwitcher.MENUSCREEN);
+	}
 
 }

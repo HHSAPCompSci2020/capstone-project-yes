@@ -56,6 +56,15 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	
 	// ----------------------
 	
+	public void refreshGameScreen()
+	{
+		GameScreen gameScreen = new GameScreen(this);
+		screens.set(ScreenSwitcher.GAMESCREEN,gameScreen);
+		screens.get(ScreenSwitcher.GAMESCREEN).setup();
+	}
+	
+	// ----------------------
+	
 	/**
 	 * Takes the input of a key when it is pressed and stores it
 	 */
