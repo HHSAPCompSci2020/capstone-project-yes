@@ -314,12 +314,16 @@ public class GameScreen extends Screen {
 				win = 1;
 				p1.setCheckpoint(0);
 				p2.setCheckpoint(0);
+				p1Score = 0;
+				p2Score = 0;
 			}
 			else if(p2Score >= 5)
 			{
 				win = 2;
 				p1.setCheckpoint(0);
 				p2.setCheckpoint(0);
+				p1Score = 0;
+				p2Score = 0;
 			}
 		}
 		else
