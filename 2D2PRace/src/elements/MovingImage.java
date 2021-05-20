@@ -57,6 +57,20 @@ public class MovingImage extends Rectangle2D.Double {
 //		y = Math.max(0,y);
 //	}
 	
+	/*
+	public void rotate() {
+		double xCenter = super.x + super.width/2;
+		double yCenter = super.y + super.height/2;
+		
+		double temp = super.width;
+		super.width = super.height;
+		super.height = temp;
+		
+		super.x = xCenter - super.width/2;
+		super.y = yCenter - super.height/2;
+	}
+	*/
+	
 
 	/**
 	 * Draws the moving image object on the specified PApplet
@@ -64,6 +78,8 @@ public class MovingImage extends Rectangle2D.Double {
 	 */
 	public void draw(PApplet g) {
 		g.push();
+		g.translate((float)(x + width/2), (float)(y + height/2));
+		g.rotate(1);
 		g.image(image,(int)x,(int)y,(int)width,(int)height);
 		g.pop();
 	}

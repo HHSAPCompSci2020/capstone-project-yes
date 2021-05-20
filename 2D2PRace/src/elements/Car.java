@@ -19,9 +19,6 @@ import processing.core.PImage;
  */
 public class Car extends MovingImage {
 	
-	private static final int CAR_WIDTH = 45;
-	private static final int CAR_HEIGHT = 60;
-	
 	private double speed, direction, friction, xVelocity, yVelocity;
 	private int checkpoint;
 	private boolean onAWall;
@@ -33,8 +30,8 @@ public class Car extends MovingImage {
 	 * @param x x-coordinate
 	 * @param y y-coordinate
 	 */
-	public Car(PImage img, int x, int y) {
-		super(img, x, y, CAR_WIDTH, CAR_HEIGHT);
+	public Car(PImage img, int x, int y, int wid, int h) {
+		super(img, x, y, wid, h);
 		speed = 0;
 		direction = 0;
 		xVelocity = 0;
@@ -69,6 +66,7 @@ public class Car extends MovingImage {
 	 */
 	public void turn(int turn) {
 		direction += turn;
+		
 	}
 	
 	/**

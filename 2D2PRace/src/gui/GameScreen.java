@@ -60,8 +60,8 @@ public class GameScreen extends Screen {
 	 */
 	public void setup()
 	{
-		p1 = new Car(surface.loadImage("car1-1.png"),225,340);
-		p2 = new Car(surface.loadImage("car1-2.png"),225,400);
+		p1 = new Car(surface.loadImage("car1-1.png"),215,340, 60, 45);
+		p2 = new Car(surface.loadImage("car1-2.png"),215,400, 60, 45);
 		surface.loadImage("projectile.png");
 
 	}
