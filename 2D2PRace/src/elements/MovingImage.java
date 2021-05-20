@@ -14,6 +14,7 @@ import processing.core.PImage;
 public class MovingImage extends Rectangle2D.Double {
 	
 	private PImage image;
+	private int direction;
 
 	/**
 	 * MovingImage constructor
@@ -26,6 +27,7 @@ public class MovingImage extends Rectangle2D.Double {
 	public MovingImage(PImage img, int x, int y, int w, int h) {
 		super(x,y,w,h);
 		image = img;
+		direction = 0;
 	}
 	
 	/**
@@ -55,12 +57,15 @@ public class MovingImage extends Rectangle2D.Double {
 //		y = Math.max(0,y);
 //	}
 	
+
 	/**
 	 * Draws the moving image object on the specified PApplet
 	 * @param g PApplet to draw the MovingImage object onto
 	 */
 	public void draw(PApplet g) {
+		g.push();
 		g.image(image,(int)x,(int)y,(int)width,(int)height);
+		g.pop();
 	}
 	
 	

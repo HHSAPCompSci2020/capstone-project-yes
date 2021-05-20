@@ -182,8 +182,6 @@ public class GameScreen extends Screen {
 					{
 						c.setColor(new Color(255,255,255));
 					}
-					
-					
 				}
 				else
 				{
@@ -231,13 +229,30 @@ public class GameScreen extends Screen {
 		if(win == 0)
 		{
 			if (surface.isPressed(KeyEvent.VK_A))
+			{
+				System.out.println("turn left");
 				p1.turn(-5);
+				p1.changeDirection(-5);
+			}
 			if (surface.isPressed(KeyEvent.VK_D))
+			{
+				System.out.println("turn right");
 				p1.turn(5);
+				p1.changeDirection(5);
+			}
+			else if (!(surface.isPressed(KeyEvent.VK_A)) && !(surface.isPressed(KeyEvent.VK_D)))
+			{
+				System.out.println("forward");
+				p1.changeDirection(0);
+			}
 			if (surface.isPressed(KeyEvent.VK_W))
+			{
 				p1.accelerate();
+			}
 			if (surface.isPressed(KeyEvent.VK_V))
+			{
 				p1.boost();
+			}
 			if (surface.isPressed(KeyEvent.VK_C))
 			{
 				//System.out.println("p1 shot");
@@ -248,13 +263,21 @@ public class GameScreen extends Screen {
 				projectiles.add(p);
 			}
 			if (surface.isPressed(KeyEvent.VK_LEFT))
+			{
 				p2.turn(-5);
+			}
 			if (surface.isPressed(KeyEvent.VK_RIGHT))
+			{
 				p2.turn(5);
+			}
 			if (surface.isPressed(KeyEvent.VK_UP))
+			{
 				p2.accelerate();
+			}
 			if (surface.isPressed(KeyEvent.VK_SLASH))
+			{
 				p2.boost();
+			}
 			if (surface.isPressed(KeyEvent.VK_PERIOD))
 			{
 				//System.out.println("p2 shot");
