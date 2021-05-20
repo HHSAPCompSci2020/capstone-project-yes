@@ -220,15 +220,19 @@ public class GameScreen extends Screen {
 						c.setColor(new Color(255, 0, 0));
 						if(p1.getCheckpoint() == 3)
 						{
-							p1.setCheckpoint(c.getNum());
 							if(win == 0)
+							{
+								p1.setCheckpoint(c.getNum());
 								p1Score++;
+							}
 						}
 						if(p2.getCheckpoint() == 3)
 						{
-							p2.setCheckpoint(c.getNum());
 							if(win == 0)
+							{
+								p2.setCheckpoint(c.getNum());
 								p2Score++;
+							}
 						}
 					}
 					else if(p1.intersects(c))
@@ -236,9 +240,11 @@ public class GameScreen extends Screen {
 						c.setColor(new Color(252, 240, 3));
 						if(p1.getCheckpoint() == 3)
 						{
-							p1.setCheckpoint(c.getNum());
 							if(win == 0)
+							{
+								p1.setCheckpoint(c.getNum());
 								p1Score++;
+							}
 						}
 					}
 					else if(p2.intersects(c))
@@ -246,9 +252,11 @@ public class GameScreen extends Screen {
 						c.setColor(new Color(53, 252, 3));
 						if(p2.getCheckpoint() == 3)
 						{
-							p2.setCheckpoint(c.getNum());
 							if(win == 0)
+							{
+								p2.setCheckpoint(c.getNum());
 								p2Score++;
+							}
 						}
 					}
 					else
