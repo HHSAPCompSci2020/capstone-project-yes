@@ -1,6 +1,7 @@
 package elements;
 
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -9,12 +10,12 @@ import processing.core.PImage;
  * Used to create the moving images used by other classes
  * 
  * @author Alex Lan
- * @version 5/14/21
+ * @version 5/20/21
  */
 public class MovingImage extends Rectangle2D.Double {
 	
-	private PImage image;
-	private int direction;
+	private ArrayList<PImage> images;
+	private int imageUsed;
 
 	/**
 	 * MovingImage constructor
@@ -24,10 +25,10 @@ public class MovingImage extends Rectangle2D.Double {
 	 * @param w width of the image
 	 * @param h height of the image
 	 */
-	public MovingImage(PImage img, int x, int y, int w, int h) {
+	public MovingImage(ArrayList<PImage> img, int x, int y, int w, int h) {
 		super(x,y,w,h);
-		image = img;
-		direction = 0;
+		images = img;
+		imageUsed = 0;
 	}
 	
 	/**
@@ -70,15 +71,25 @@ public class MovingImage extends Rectangle2D.Double {
 		super.y = yCenter - super.height/2;
 	}
 	*/
-	
+	/*
+	public PImage getImage() {
+		return image;
+	}
+	*/
 
+	public void changeImage(int i)
+	{
+		//System.out.println(i);
+		imageUsed = i;
+	}
+	
 	/**
 	 * Draws the moving image object on the specified PApplet
 	 * @param g PApplet to draw the MovingImage object onto
 	 */
 	public void draw(PApplet g) {
 		g.push();
-		g.image(image,(int)x,(int)y,(int)width,(int)height);
+		g.image(images.get(imageUsed),(int)x,(int)y,(int)width,(int)height);
 		g.pop();
 	}
 	

@@ -15,7 +15,7 @@ import processing.core.PImage;
  * Uses a custom images that moves.
  * 
  * @author Alex Lan
- * @version 5/16/21
+ * @version 5/20/21
  */
 public class Car extends MovingImage {
 	
@@ -30,7 +30,7 @@ public class Car extends MovingImage {
 	 * @param x x-coordinate
 	 * @param y y-coordinate
 	 */
-	public Car(PImage img, int x, int y, int wid, int h) {
+	public Car(ArrayList<PImage> img, int x, int y, int wid, int h) {
 		super(img, x, y, wid, h);
 		speed = 0;
 		direction = 0;
@@ -66,7 +66,80 @@ public class Car extends MovingImage {
 	 */
 	public void turn(int turn) {
 		direction += turn;
-		
+		System.out.println(direction);
+		if(direction < 0)
+		{
+			int negDirection = (int)Math.abs(direction);
+			if((negDirection % 360 >= 330 && negDirection % 360 <= 360) || (negDirection % 360 <= 30 && negDirection % 360 >= 0))
+			{
+				//System.out.println("Changing");
+				changeImage(0);
+			}
+			else if((negDirection % 360 > 30 && negDirection % 360 < 60))
+			{
+				changeImage(1);
+			}
+			else if((negDirection % 360 >= 60 && negDirection % 360 <= 120))
+			{
+				changeImage(2);
+			}
+			else if((negDirection % 360 > 120 && negDirection % 360 < 150))
+			{
+				changeImage(3);
+			}
+			else if((negDirection % 360 >= 150 && negDirection % 360 <= 210))
+			{
+				changeImage(4);
+			}
+			else if((negDirection % 360 > 210 && negDirection % 360 < 240))
+			{
+				changeImage(5);
+			}
+			else if((negDirection % 360 >= 240 && negDirection % 360 <= 300))
+			{
+				changeImage(6);
+			}
+			else if((negDirection % 360 > 300 && negDirection % 360 < 330))
+			{
+				changeImage(7);
+			}
+		}
+		else if(direction >= 0)
+		{
+			if((direction % 360 >= 330 && direction % 360 <= 360) || (direction % 360 <= 30 && direction % 360 >= 0))
+			{
+				//System.out.println("Changing");
+				changeImage(0);
+			}
+			else if((direction % 360 > 30 && direction % 360 < 60))
+			{
+				changeImage(7);
+			}
+			else if((direction % 360 >= 60 && direction % 360 <= 120))
+			{
+				changeImage(6);
+			}
+			else if((direction % 360 > 120 && direction % 360 < 150))
+			{
+				changeImage(5);
+			}
+			else if((direction % 360 >= 150 && direction % 360 <= 210))
+			{
+				changeImage(4);
+			}
+			else if((direction % 360 > 210 && direction % 360 < 240))
+			{
+				changeImage(3);
+			}
+			else if((direction % 360 >= 240 && direction % 360 <= 300))
+			{
+				changeImage(2);
+			}
+			else if((direction % 360 > 300 && direction % 360 < 330))
+			{
+				changeImage(1);
+			}
+		}
 	}
 	
 	/**

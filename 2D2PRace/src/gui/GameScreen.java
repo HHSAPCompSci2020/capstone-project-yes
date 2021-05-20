@@ -16,7 +16,7 @@ import processing.core.PImage;
  * player the game interface
  * 
  * @author Connor Chow
- * @version 5/16/21
+ * @version 5/20/21
  */
 public class GameScreen extends Screen {
 
@@ -25,7 +25,7 @@ public class GameScreen extends Screen {
 	private ArrayList<Shape> obstacles;
 	private ArrayList<Projectile> projectiles;
 	private ArrayList<Checkpoint> checkpoints;
-	private ArrayList<PImage> p1Images, p2Images;
+	private ArrayList<PImage> p1Images, p2Images, projImages;
 	private int p1Score, p2Score, win;
 	
 	/**
@@ -42,6 +42,7 @@ public class GameScreen extends Screen {
 		
 		p1Images = new ArrayList<PImage>();
 		p2Images = new ArrayList<PImage>();
+		projImages = new ArrayList<PImage>();
 		
 		obstacles = new ArrayList<Shape>();
 		obstacles.add(new Rectangle(250,250,100,50));
@@ -69,14 +70,24 @@ public class GameScreen extends Screen {
 		p1Images.add(surface.loadImage("car1-2.png"));
 		p1Images.add(surface.loadImage("car1-3.png"));
 		p1Images.add(surface.loadImage("car1-4.png"));
+		p1Images.add(surface.loadImage("car1-5.png"));
+		p1Images.add(surface.loadImage("car1-6.png"));
+		p1Images.add(surface.loadImage("car1-7.png"));
+		p1Images.add(surface.loadImage("car1-8.png"));
 		
 		p2Images.add(surface.loadImage("car2-1.png"));
 		p2Images.add(surface.loadImage("car2-2.png"));
 		p2Images.add(surface.loadImage("car2-3.png"));
 		p2Images.add(surface.loadImage("car2-4.png"));
+		p2Images.add(surface.loadImage("car2-5.png"));
+		p2Images.add(surface.loadImage("car2-6.png"));
+		p2Images.add(surface.loadImage("car2-7.png"));
+		p2Images.add(surface.loadImage("car2-8.png"));		
 		
-		p1 = new Car(surface.loadImage("car1-1.png"),215,340, 60, 45);
-		p2 = new Car(surface.loadImage("car2-1.png"),215,400, 60, 45);
+		projImages.add(surface.loadImage("projectile.png"));
+		
+		p1 = new Car(p1Images, 215, 340, 45, 45);
+		p2 = new Car(p2Images, 215, 400, 45, 45);
 		surface.loadImage("projectile.png");
 	}
 	
@@ -244,17 +255,17 @@ public class GameScreen extends Screen {
 		{
 			if (surface.isPressed(KeyEvent.VK_A))
 			{
-				System.out.println("turn left");
+				//System.out.println("turn left");
 				p1.turn(-5);
 			}
 			if (surface.isPressed(KeyEvent.VK_D))
 			{
-				System.out.println("turn right");
+				//System.out.println("turn right");
 				p1.turn(5);
 			}
 			else if (!(surface.isPressed(KeyEvent.VK_A)) && !(surface.isPressed(KeyEvent.VK_D)))
 			{
-				System.out.println("forward");
+				//System.out.println("forward");
 			}
 			if (surface.isPressed(KeyEvent.VK_W))
 			{
@@ -267,7 +278,7 @@ public class GameScreen extends Screen {
 			if (surface.isPressed(KeyEvent.VK_C))
 			{
 				//System.out.println("p1 shot");
-				Projectile p = new Projectile(surface.loadImage("projectile.png"),
+				Projectile p = new Projectile(projImages,
 						(int)((p1.getCenterX()) + 40*Math.cos(Math.toRadians(p1.getDirection()))),
 						(int)(p1.getCenterY() + 40*Math.sin(Math.toRadians(p1.getDirection()))),
 						(int)(40*Math.cos(Math.toRadians(p1.getDirection()))),(int)(40*Math.sin(Math.toRadians(p1.getDirection()))));			
@@ -292,7 +303,7 @@ public class GameScreen extends Screen {
 			if (surface.isPressed(KeyEvent.VK_PERIOD))
 			{
 				//System.out.println("p2 shot");
-				Projectile p = new Projectile(surface.loadImage("projectile.png"),
+				Projectile p = new Projectile(projImages,
 						(int)((p2.getCenterX()) + 40*Math.cos(Math.toRadians(p2.getDirection()))),
 						(int)(p2.getCenterY() + 40*Math.sin(Math.toRadians(p2.getDirection()))),
 						(int)(40*Math.cos(Math.toRadians(p2.getDirection()))),(int)(40*Math.sin(Math.toRadians(p2.getDirection()))));
@@ -331,16 +342,17 @@ public class GameScreen extends Screen {
 	}
 	
 	/*
-	public void rotate(double turn) {
+	public void rotate(int turn, Car c) {
 		double rad = surface.radians((float) turn);
 		
 		surface.pushMatrix();
 		surface.imageMode(surface.CENTER);
-		surface.translate(getX(), getY());
+		surface.translate((float)(c.getX() + c.getWidth()/2), (float)(c.getY() + c.getHeight()/2));
 		surface.rotate((float) rad);
-		surface.image();
+		surface.image(c.getImage(),(float)c.getX(),(float)c.getY());
 		surface.popMatrix();
 	}
 	*/
+	
 
 }
