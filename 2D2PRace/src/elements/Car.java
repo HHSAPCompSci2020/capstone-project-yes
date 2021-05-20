@@ -169,6 +169,7 @@ public class Car extends MovingImage {
 		moveToLocation(xCoord2,yCoord2);
 	}
 	
+	
 	/**
 	 * Gets the velocity of the car on the x axis
 	 * @return the specified car object's x velocity

@@ -329,5 +329,18 @@ public class GameScreen extends Screen {
 			}
 		}
 	}
+	
+	/*
+	public void rotate(double turn) {
+		double rad = surface.radians((float) turn);
+		
+		surface.pushMatrix();
+		surface.imageMode(surface.CENTER);
+		surface.translate(getX(), getY());
+		surface.rotate((float) rad);
+		surface.image();
+		surface.popMatrix();
+	}
+	*/
 
 }
