@@ -232,18 +232,15 @@ public class GameScreen extends Screen {
 			{
 				System.out.println("turn left");
 				p1.turn(-5);
-				p1.changeDirection(-5);
 			}
 			if (surface.isPressed(KeyEvent.VK_D))
 			{
 				System.out.println("turn right");
 				p1.turn(5);
-				p1.changeDirection(5);
 			}
 			else if (!(surface.isPressed(KeyEvent.VK_A)) && !(surface.isPressed(KeyEvent.VK_D)))
 			{
 				System.out.println("forward");
-				p1.changeDirection(0);
 			}
 			if (surface.isPressed(KeyEvent.VK_W))
 			{
