@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import elements.Car;
 import elements.Checkpoint;
 import elements.Projectile;
+import processing.core.PImage;
 
 /**
  * Used by DrawingSurface to draw the specified screen, which is to show the 
@@ -24,6 +25,7 @@ public class GameScreen extends Screen {
 	private ArrayList<Shape> obstacles;
 	private ArrayList<Projectile> projectiles;
 	private ArrayList<Checkpoint> checkpoints;
+	private ArrayList<PImage> p1Images, p2Images;
 	private int p1Score, p2Score, win;
 	
 	/**
@@ -38,6 +40,9 @@ public class GameScreen extends Screen {
 		p2Score = 0;
 		win = 0;
 		
+		p1Images = new ArrayList<PImage>();
+		p2Images = new ArrayList<PImage>();
+		
 		obstacles = new ArrayList<Shape>();
 		obstacles.add(new Rectangle(250,250,100,50));
 		obstacles.add(new Rectangle(550,250,100,50));
@@ -51,7 +56,7 @@ public class GameScreen extends Screen {
 		checkpoints.add(new Checkpoint(new Color(255,255,255),575,300,50,300,1));
 		checkpoints.add(new Checkpoint(new Color(255,255,255),575,0,50,300,2));
 		checkpoints.add(new Checkpoint(new Color(255,255,255),275,0,50,300,3));
-
+		
 		projectiles = new ArrayList<Projectile>();
 	}
 	
@@ -60,10 +65,19 @@ public class GameScreen extends Screen {
 	 */
 	public void setup()
 	{
+		p1Images.add(surface.loadImage("car1-1.png"));
+		p1Images.add(surface.loadImage("car1-2.png"));
+		p1Images.add(surface.loadImage("car1-3.png"));
+		p1Images.add(surface.loadImage("car1-4.png"));
+		
+		p2Images.add(surface.loadImage("car2-1.png"));
+		p2Images.add(surface.loadImage("car2-2.png"));
+		p2Images.add(surface.loadImage("car2-3.png"));
+		p2Images.add(surface.loadImage("car2-4.png"));
+		
 		p1 = new Car(surface.loadImage("car1-1.png"),215,340, 60, 45);
-		p2 = new Car(surface.loadImage("car1-2.png"),215,400, 60, 45);
+		p2 = new Car(surface.loadImage("car2-1.png"),215,400, 60, 45);
 		surface.loadImage("projectile.png");
-
 	}
 	
 	/**
