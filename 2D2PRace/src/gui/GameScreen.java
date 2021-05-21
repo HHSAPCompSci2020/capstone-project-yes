@@ -17,7 +17,7 @@ import processing.core.PImage;
  * player the game interface
  * 
  * @author Connor Chow
- * @version 5/20/21
+ * @version 5/21/21
  */
 public class GameScreen extends Screen {
 
@@ -106,7 +106,7 @@ public class GameScreen extends Screen {
 	{
 		surface.pushMatrix();
 		
-		surface.background(255);
+		surface.background(110);
 		
 		for(Checkpoint c : checkpoints)
 		{

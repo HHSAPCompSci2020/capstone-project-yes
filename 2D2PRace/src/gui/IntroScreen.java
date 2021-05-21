@@ -23,7 +23,9 @@ public class IntroScreen extends Screen {
 		super();
 		this.surface = surface;
 		
-		startButton = new Rectangle(960/2-100,540/2-50,200,100);
+		startButton = new Rectangle(this.surface.width/2-100,this.surface.height/2-50,200,100);
+		System.out.println(this.surface.width);
+		System.out.println(this.surface.displayWidth);
 	}
 	
 	/**
@@ -34,6 +36,8 @@ public class IntroScreen extends Screen {
 		surface.pushMatrix();
 		surface.background(0,65,175);
 		surface.fill(255);
+		
+		startButton = new Rectangle(surface.width/2-startButton.width/2,surface.height/2-startButton.height/2,200,100);
 
 		surface.rect(startButton.x, startButton.y, startButton.width, startButton.height, 10, 10, 10, 10);
 		surface.fill(0);
@@ -45,7 +49,9 @@ public class IntroScreen extends Screen {
 		surface.fill(255);
 		String title = "2D2PRace";
 		String subtitle = "By: Alex and Connor";
+		w = surface.textWidth(title);
 		surface.text(title, surface.width/2-w/2, surface.height/8);
+		w = surface.textWidth(subtitle);
 		surface.text(subtitle, surface.width/2-w/2, surface.height*2/8);
 		surface.popMatrix();
 	}

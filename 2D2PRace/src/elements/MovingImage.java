@@ -10,12 +10,13 @@ import processing.core.PImage;
  * Used to create the moving images used by other classes
  * 
  * @author Alex Lan
- * @version 5/20/21
+ * @version 5/21/21
  */
 public class MovingImage extends Rectangle2D.Double {
 	
 	private ArrayList<PImage> images;
 	private int imageUsed;
+	private double dir;
 
 	/**
 	 * MovingImage constructor
@@ -29,6 +30,7 @@ public class MovingImage extends Rectangle2D.Double {
 		super(x,y,w,h);
 		images = img;
 		imageUsed = 0;
+		dir = 0;
 	}
 	
 	/**
@@ -51,12 +53,12 @@ public class MovingImage extends Rectangle2D.Double {
 		super.y += y;
 	}
 	
-//	public void applyWindowLimits(int windowWidth, int windowHeight) {
-//		x = Math.min(x,windowWidth-width);
-//		y = Math.min(y,windowHeight-height);
-//		x = Math.max(0,x);
-//		y = Math.max(0,y);
-//	}
+	public void applyWindowLimits(int windowWidth, int windowHeight) {
+		x = Math.min(x,windowWidth-width);
+		y = Math.min(y,windowHeight-height);
+		x = Math.max(0,x);
+		y = Math.max(0,y);
+	}
 	
 	/*
 	public void rotate() {
@@ -89,9 +91,21 @@ public class MovingImage extends Rectangle2D.Double {
 	 */
 	public void draw(PApplet g) {
 		g.push();
+//		g.translate((float)(x+width/2), (float)(y+height/2));
+//		g.rotate((float)dir);
+//		g.image(images.get(0),(int)(-width/2),(int)(-height/2),(int)width,(int)height);
 		g.image(images.get(imageUsed),(int)x,(int)y,(int)width,(int)height);
 		g.pop();
 	}
 	
+	public void turn(double dir) {
+		this.dir = dir;
+	}
+	
+	public void turnToward(double x, double y) {
+		dir = Math.atan(((double)this.y-y)/(this.x-x));
+		if (this.x > x)
+			dir += Math.PI;
+	}	
 	
 }

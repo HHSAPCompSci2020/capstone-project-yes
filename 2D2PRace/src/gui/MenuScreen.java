@@ -23,8 +23,8 @@ public class MenuScreen extends Screen {
 		super();
 		this.surface = surface;
 		
-		gameButton = new Rectangle(960*3/4-100,540/2-50,200,100);
-		howToPlayButton = new Rectangle(960*1/4-100,540/2-50,200,100);
+		gameButton = new Rectangle(this.surface.width*3/4-100,this.surface.height/2-50,200,100);
+		howToPlayButton = new Rectangle(this.surface.width*1/4-100,this.surface.height/2-50,200,100);
 	}
 	
 	/**
@@ -35,7 +35,11 @@ public class MenuScreen extends Screen {
 		surface.pushMatrix();
 		surface.background(255);
 		surface.fill(0);
-		String menuTitle = "Menu!";
+		
+		gameButton = new Rectangle(surface.width*3/4-gameButton.width/2,surface.height/2-gameButton.height/2,200,100);
+		howToPlayButton = new Rectangle(this.surface.width*1/4-howToPlayButton.width/2,this.surface.height/2-howToPlayButton.height/2,200,100);
+		
+		String menuTitle = "Menu";
 		float w = surface.textWidth(menuTitle);
 		surface.text(menuTitle, surface.width/2-w/2, surface.height/8);
 		
