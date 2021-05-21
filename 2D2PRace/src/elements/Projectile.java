@@ -1,6 +1,6 @@
 package elements;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 import gui.GameScreen;
 import processing.core.PApplet;
@@ -29,7 +29,7 @@ public class Projectile extends MovingImage {
 	 * @param xv x-velocity of the projectile
 	 * @param yv y-velocity of the projectile
 	 */
-	public Projectile(ArrayList<PImage> img, int x, int y, int xv, int yv) {
+	public Projectile(PImage img, int x, int y, int xv, int yv) {
 		super(img, x, y, PROJ_WIDTH, PROJ_HEIGHT);
 		
 		this.xv = xv;

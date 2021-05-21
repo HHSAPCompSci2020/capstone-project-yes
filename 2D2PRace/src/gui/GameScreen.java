@@ -26,7 +26,7 @@ public class GameScreen extends Screen {
 	private ArrayList<Shape> obstacles;
 	private ArrayList<Projectile> projectiles;
 	private ArrayList<Checkpoint> checkpoints;
-	private ArrayList<PImage> p1Images, p2Images, projImages;
+//	private ArrayList<PImage> p1Images, p2Images, projImages;
 	private int p1Score, p2Score, win;
 	
 	private Rectangle returnButton;
@@ -43,9 +43,9 @@ public class GameScreen extends Screen {
 		p2Score = 0;
 		win = 0;
 		
-		p1Images = new ArrayList<PImage>();
-		p2Images = new ArrayList<PImage>();
-		projImages = new ArrayList<PImage>();
+//		p1Images = new ArrayList<PImage>();
+//		p2Images = new ArrayList<PImage>();
+//		projImages = new ArrayList<PImage>();
 		
 		obstacles = new ArrayList<Shape>();
 		obstacles.add(new Rectangle(250,250,100,50));
@@ -71,28 +71,30 @@ public class GameScreen extends Screen {
 	 */
 	public void setup()
 	{
-		p1Images.add(surface.loadImage("car1-1.png"));
-		p1Images.add(surface.loadImage("car1-2.png"));
-		p1Images.add(surface.loadImage("car1-3.png"));
-		p1Images.add(surface.loadImage("car1-4.png"));
-		p1Images.add(surface.loadImage("car1-5.png"));
-		p1Images.add(surface.loadImage("car1-6.png"));
-		p1Images.add(surface.loadImage("car1-7.png"));
-		p1Images.add(surface.loadImage("car1-8.png"));
+//		p1Images.add(surface.loadImage("car1-1.png"));
+//		p1Images.add(surface.loadImage("car1-2.png"));
+//		p1Images.add(surface.loadImage("car1-3.png"));
+//		p1Images.add(surface.loadImage("car1-4.png"));
+//		p1Images.add(surface.loadImage("car1-5.png"));
+//		p1Images.add(surface.loadImage("car1-6.png"));
+//		p1Images.add(surface.loadImage("car1-7.png"));
+//		p1Images.add(surface.loadImage("car1-8.png"));
+//		
+//		p2Images.add(surface.loadImage("car2-1.png"));
+//		p2Images.add(surface.loadImage("car2-2.png"));
+//		p2Images.add(surface.loadImage("car2-3.png"));
+//		p2Images.add(surface.loadImage("car2-4.png"));
+//		p2Images.add(surface.loadImage("car2-5.png"));
+//		p2Images.add(surface.loadImage("car2-6.png"));
+//		p2Images.add(surface.loadImage("car2-7.png"));
+//		p2Images.add(surface.loadImage("car2-8.png"));		
 		
-		p2Images.add(surface.loadImage("car2-1.png"));
-		p2Images.add(surface.loadImage("car2-2.png"));
-		p2Images.add(surface.loadImage("car2-3.png"));
-		p2Images.add(surface.loadImage("car2-4.png"));
-		p2Images.add(surface.loadImage("car2-5.png"));
-		p2Images.add(surface.loadImage("car2-6.png"));
-		p2Images.add(surface.loadImage("car2-7.png"));
-		p2Images.add(surface.loadImage("car2-8.png"));		
+//		projImages.add(surface.loadImage("projectile.png"));
 		
-		projImages.add(surface.loadImage("projectile.png"));
-		
-		p1 = new Car(p1Images, 215, 340, 45, 45);
-		p2 = new Car(p2Images, 215, 400, 45, 45);
+//		p1 = new Car(p1Images, 215, 340, 45, 45);
+//		p2 = new Car(p2Images, 215, 400, 45, 45);
+		p1 = new Car(surface.loadImage("car1-1.png"), 215, 340, 35, 35);
+		p2 = new Car(surface.loadImage("car2-1.png"), 215, 400, 35, 35);
 		surface.loadImage("projectile.png");
 	}
 	
@@ -274,6 +276,7 @@ public class GameScreen extends Screen {
 			{
 				//System.out.println("turn left");
 				p1.turn(-5);
+
 			}
 			if (surface.isPressed(KeyEvent.VK_D))
 			{
@@ -295,7 +298,7 @@ public class GameScreen extends Screen {
 			if (surface.isPressed(KeyEvent.VK_C))
 			{
 				//System.out.println("p1 shot");
-				Projectile p = new Projectile(projImages,
+				Projectile p = new Projectile(surface.loadImage("projectile.png"),
 						(int)((p1.getCenterX()) + 40*Math.cos(Math.toRadians(p1.getDirection()))),
 						(int)(p1.getCenterY() + 40*Math.sin(Math.toRadians(p1.getDirection()))),
 						(int)(40*Math.cos(Math.toRadians(p1.getDirection()))),(int)(40*Math.sin(Math.toRadians(p1.getDirection()))));			
@@ -320,7 +323,7 @@ public class GameScreen extends Screen {
 			if (surface.isPressed(KeyEvent.VK_PERIOD))
 			{
 				//System.out.println("p2 shot");
-				Projectile p = new Projectile(projImages,
+				Projectile p = new Projectile(surface.loadImage("projectile.png"),
 						(int)((p2.getCenterX()) + 40*Math.cos(Math.toRadians(p2.getDirection()))),
 						(int)(p2.getCenterY() + 40*Math.sin(Math.toRadians(p2.getDirection()))),
 						(int)(40*Math.cos(Math.toRadians(p2.getDirection()))),(int)(40*Math.sin(Math.toRadians(p2.getDirection()))));

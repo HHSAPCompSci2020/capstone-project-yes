@@ -15,11 +15,11 @@ import processing.core.PImage;
  * Uses a custom images that moves.
  * 
  * @author Alex Lan
- * @version 5/20/21
+ * @version 5/21/21
  */
 public class Car extends MovingImage {
 	
-	private double speed, direction, friction, xVelocity, yVelocity;
+	private double speed, friction, xVelocity, yVelocity;
 	private int checkpoint;
 	private boolean onAWall;
 	
@@ -30,10 +30,9 @@ public class Car extends MovingImage {
 	 * @param x x-coordinate
 	 * @param y y-coordinate
 	 */
-	public Car(ArrayList<PImage> img, int x, int y, int wid, int h) {
+	public Car(PImage img, int x, int y, int wid, int h) {
 		super(img, x, y, wid, h);
 		speed = 0;
-		direction = 0;
 		xVelocity = 0;
 		yVelocity = 0;
 		friction = 0.85;
@@ -61,88 +60,6 @@ public class Car extends MovingImage {
 	}
 	
 	/**
-	 * Turns the car by a specified angle
-	 * @param turn angle the car will turn (in degrees)
-	 */
-	public void turn(int turn) {
-		direction += turn;
-		System.out.println(direction);
-		if(direction < 0)
-		{
-			int negDirection = (int)Math.abs(direction);
-			if((negDirection % 360 >= 330 && negDirection % 360 <= 360) || (negDirection % 360 <= 30 && negDirection % 360 >= 0))
-			{
-				//System.out.println("Changing");
-				changeImage(0);
-			}
-			else if((negDirection % 360 > 30 && negDirection % 360 < 60))
-			{
-				changeImage(1);
-			}
-			else if((negDirection % 360 >= 60 && negDirection % 360 <= 120))
-			{
-				changeImage(2);
-			}
-			else if((negDirection % 360 > 120 && negDirection % 360 < 150))
-			{
-				changeImage(3);
-			}
-			else if((negDirection % 360 >= 150 && negDirection % 360 <= 210))
-			{
-				changeImage(4);
-			}
-			else if((negDirection % 360 > 210 && negDirection % 360 < 240))
-			{
-				changeImage(5);
-			}
-			else if((negDirection % 360 >= 240 && negDirection % 360 <= 300))
-			{
-				changeImage(6);
-			}
-			else if((negDirection % 360 > 300 && negDirection % 360 < 330))
-			{
-				changeImage(7);
-			}
-		}
-		else if(direction >= 0)
-		{
-			if((direction % 360 >= 330 && direction % 360 <= 360) || (direction % 360 <= 30 && direction % 360 >= 0))
-			{
-				//System.out.println("Changing");
-				changeImage(0);
-			}
-			else if((direction % 360 > 30 && direction % 360 < 60))
-			{
-				changeImage(7);
-			}
-			else if((direction % 360 >= 60 && direction % 360 <= 120))
-			{
-				changeImage(6);
-			}
-			else if((direction % 360 > 120 && direction % 360 < 150))
-			{
-				changeImage(5);
-			}
-			else if((direction % 360 >= 150 && direction % 360 <= 210))
-			{
-				changeImage(4);
-			}
-			else if((direction % 360 > 210 && direction % 360 < 240))
-			{
-				changeImage(3);
-			}
-			else if((direction % 360 >= 240 && direction % 360 <= 300))
-			{
-				changeImage(2);
-			}
-			else if((direction % 360 > 300 && direction % 360 < 330))
-			{
-				changeImage(1);
-			}
-		}
-	}
-	
-	/**
 	 * Boosts the car in the direction the car is facing
 	 */
 	public void boost() {
@@ -157,8 +74,8 @@ public class Car extends MovingImage {
 	 * @param walls ArrayList of walls that the car cannot pass through
 	 */
 	public void act(ArrayList<Shape> walls, Car c) {
-		yVelocity = speed * Math.sin(Math.toRadians(direction));
-		xVelocity = speed * Math.cos(Math.toRadians(direction));
+		yVelocity = speed * Math.sin(Math.toRadians(getDirection()));
+		xVelocity = speed * Math.cos(Math.toRadians(getDirection()));
 
 		speed *= friction;
 		
@@ -276,15 +193,6 @@ public class Car extends MovingImage {
 	public double getYVelocity()
 	{
 		return yVelocity;
-	}
-	
-	/**
-	 * Gets the direction of the car (in degrees)
-	 * @return the specified car object's angle (in degrees)
-	 */
-	public double getDirection()
-	{
-		return direction;
 	}
 	
 	public int getCheckpoint()

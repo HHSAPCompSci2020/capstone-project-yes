@@ -1,7 +1,7 @@
 package elements;
 
 import java.awt.geom.Rectangle2D;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -14,7 +14,7 @@ import processing.core.PImage;
  */
 public class MovingImage extends Rectangle2D.Double {
 	
-	private ArrayList<PImage> images;
+	private PImage image;
 	private int imageUsed;
 	private double dir;
 
@@ -26,9 +26,9 @@ public class MovingImage extends Rectangle2D.Double {
 	 * @param w width of the image
 	 * @param h height of the image
 	 */
-	public MovingImage(ArrayList<PImage> img, int x, int y, int w, int h) {
+	public MovingImage(PImage img, int x, int y, int w, int h) {
 		super(x,y,w,h);
-		images = img;
+		image = img;
 		imageUsed = 0;
 		dir = 0;
 	}
@@ -53,37 +53,12 @@ public class MovingImage extends Rectangle2D.Double {
 		super.y += y;
 	}
 	
-	public void applyWindowLimits(int windowWidth, int windowHeight) {
-		x = Math.min(x,windowWidth-width);
-		y = Math.min(y,windowHeight-height);
-		x = Math.max(0,x);
-		y = Math.max(0,y);
-	}
-	
-	/*
-	public void rotate() {
-		double xCenter = super.x + super.width/2;
-		double yCenter = super.y + super.height/2;
-		
-		double temp = super.width;
-		super.width = super.height;
-		super.height = temp;
-		
-		super.x = xCenter - super.width/2;
-		super.y = yCenter - super.height/2;
-	}
-	*/
-	/*
-	public PImage getImage() {
-		return image;
-	}
-	*/
-
-	public void changeImage(int i)
-	{
-		//System.out.println(i);
-		imageUsed = i;
-	}
+//	public void applyWindowLimits(int windowWidth, int windowHeight) {
+//		x = Math.min(x,windowWidth-width);
+//		y = Math.min(y,windowHeight-height);
+//		x = Math.max(0,x);
+//		y = Math.max(0,y);
+//	}
 	
 	/**
 	 * Draws the moving image object on the specified PApplet
@@ -91,21 +66,17 @@ public class MovingImage extends Rectangle2D.Double {
 	 */
 	public void draw(PApplet g) {
 		g.push();
-//		g.translate((float)(x+width/2), (float)(y+height/2));
-//		g.rotate((float)dir);
-//		g.image(images.get(0),(int)(-width/2),(int)(-height/2),(int)width,(int)height);
-		g.image(images.get(imageUsed),(int)x,(int)y,(int)width,(int)height);
+		g.translate((float)(x+width/2), (float)(y+height/2));
+		g.rotate(g.radians((float)dir));
+		g.image(image,(int)(-width/2),(int)(-height/2),(int)width,(int)height);
 		g.pop();
 	}
 	
 	public void turn(double dir) {
-		this.dir = dir;
+		this.dir += dir;
 	}
 	
-	public void turnToward(double x, double y) {
-		dir = Math.atan(((double)this.y-y)/(this.x-x));
-		if (this.x > x)
-			dir += Math.PI;
-	}	
-	
+	public double getDirection() {
+		return dir;
+	}
 }
