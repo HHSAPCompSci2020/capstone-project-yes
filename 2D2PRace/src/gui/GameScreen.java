@@ -94,7 +94,13 @@ public class GameScreen extends Screen {
 //		p1 = new Car(p1Images, 215, 340, 45, 45);
 //		p2 = new Car(p2Images, 215, 400, 45, 45);
 		p1 = new Car(surface.loadImage("car1-1.png"), 215, 340, 35, 35);
+		p1 = new Car(surface.loadImage("fidgetspinner1.png"), 215, 340, 35, 35);
+		p1 = new Car(surface.loadImage("red.png"), 215, 340, 35, 35);
+
 		p2 = new Car(surface.loadImage("car2-1.png"), 215, 400, 35, 35);
+		p2 = new Car(surface.loadImage("fidgetspinner2.png"), 215, 400, 35, 35);
+		p2 = new Car(surface.loadImage("cyan.png"), 215, 400, 35, 35);
+
 		surface.loadImage("projectile.png");
 	}
 	
@@ -298,7 +304,7 @@ public class GameScreen extends Screen {
 			if (surface.isPressed(KeyEvent.VK_C))
 			{
 				//System.out.println("p1 shot");
-				Projectile p = new Projectile(surface.loadImage("projectile.png"),
+				Projectile p = new Projectile(surface.loadImage("red.png"),
 						(int)((p1.getCenterX()) + 40*Math.cos(Math.toRadians(p1.getDirection()))),
 						(int)(p1.getCenterY() + 40*Math.sin(Math.toRadians(p1.getDirection()))),
 						(int)(40*Math.cos(Math.toRadians(p1.getDirection()))),(int)(40*Math.sin(Math.toRadians(p1.getDirection()))));			

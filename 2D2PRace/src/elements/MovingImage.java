@@ -67,7 +67,8 @@ public class MovingImage extends Rectangle2D.Double {
 	public void draw(PApplet g) {
 		g.push();
 		g.translate((float)(x+width/2), (float)(y+height/2));
-		g.rotate(g.radians((float)dir));
+		g.rotate((float)dir);
+		//g.rotate(g.radians((float)dir));
 		g.image(image,(int)(-width/2),(int)(-height/2),(int)width,(int)height);
 		g.pop();
 	}
