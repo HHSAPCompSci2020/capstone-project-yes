@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.Point;
 import java.awt.Rectangle;
+
+import processing.core.PFont;
 /**
  * Used by DrawingSurface to draw the specified screen, which is for creating the intro screen 
  * that is the default screen to display when the game is opened
@@ -15,6 +17,8 @@ public class IntroScreen extends Screen {
 	
 	private Rectangle startButton,backgroundButton;
 	private int openButtonNum;
+	
+	private PFont font1, font2;
 	/**
 	 * Creates a new IntroScreen that takes in the DrawingSurface
 	 * @param surface DrawingSurface that will display the graphics
@@ -31,13 +35,20 @@ public class IntroScreen extends Screen {
 //		System.out.println(this.surface.displayWidth);
 	}
 	
+	public void setup() {
+		
+		String[] fonts = PFont.list();
+		surface.printArray(fonts);
+		
+	}
+	
 	/**
 	 * Draws the assets for the IntroScreen on the previously inputed DrawingSurface
 	 */
 	public void draw()
 	{
 		surface.pushMatrix();
-		surface.background(237, 234, 229);
+		surface.background(135, 206, 235);
 		surface.fill(237, 234, 229);
 		surface.noStroke();
 		surface.rect(backgroundButton.x, backgroundButton.y, backgroundButton.width, backgroundButton.height);
@@ -50,6 +61,8 @@ public class IntroScreen extends Screen {
 			openButtonNum -= 3;
 		}
 		
+		font1 = surface.createFont("STIXGeneral-Bold", 26);
+		surface.textFont(font1);
 		surface.fill(255 - openButtonNum);
 		startButton = new Rectangle(surface.width/2-startButton.width/2,surface.height/2-startButton.height/2,200,100);
 		surface.rect(startButton.x, startButton.y, startButton.width, startButton.height, 10, 10, 10, 10);
@@ -59,9 +72,12 @@ public class IntroScreen extends Screen {
 		float h = surface.textWidth(buttonText)/buttonText.length();
 		surface.text(buttonText, startButton.x+startButton.width/2-w/2, startButton.y+startButton.height/2+h/2);
 
+		font2 = surface.createFont("YuMin_36pKn-Demibold", 12);
+		surface.textFont(font2);
 		surface.fill(99, 98, 95);
 		String title = "2D2PRace";
 		String subtitle = "By: Alex and Connor";
+		
 		w = surface.textWidth(title);
 		surface.text(title, surface.width/2-w/2, surface.height/8);
 		w = surface.textWidth(subtitle);

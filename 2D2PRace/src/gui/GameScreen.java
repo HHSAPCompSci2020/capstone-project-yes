@@ -58,8 +58,8 @@ public class GameScreen extends Screen {
 		obstacles.add(new Rectangle(935, 0, 25, 515));
 		
 		checkpoints = new ArrayList<Checkpoint>();
-		checkpoints.add(new Checkpoint(new Color(255,246,3),275,300,50,300,0));
-		checkpoints.add(new Checkpoint(new Color(199, 196, 191),575,300,50,300,1));
+		checkpoints.add(new Checkpoint(new Color(255,246,3),275,300,50,200,0));
+		checkpoints.add(new Checkpoint(new Color(199, 196, 191),575,300,50,200,1));
 		checkpoints.add(new Checkpoint(new Color(199, 196, 191),575,0,50,300,2));
 		checkpoints.add(new Checkpoint(new Color(199, 196, 191),275,0,50,300,3));
 		
