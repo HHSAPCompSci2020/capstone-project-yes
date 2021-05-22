@@ -57,13 +57,13 @@ public class GameScreen extends Screen {
 		
 		checkpoints = new ArrayList<Checkpoint>();
 		checkpoints.add(new Checkpoint(new Color(255,246,3),275,300,50,300,0));
-		checkpoints.add(new Checkpoint(new Color(255,255,255),575,300,50,300,1));
-		checkpoints.add(new Checkpoint(new Color(255,255,255),575,0,50,300,2));
-		checkpoints.add(new Checkpoint(new Color(255,255,255),275,0,50,300,3));
+		checkpoints.add(new Checkpoint(new Color(199, 196, 191),575,300,50,300,1));
+		checkpoints.add(new Checkpoint(new Color(199, 196, 191),575,0,50,300,2));
+		checkpoints.add(new Checkpoint(new Color(199, 196, 191),275,0,50,300,3));
 		
 		projectiles = new ArrayList<Projectile>();
 		
-		returnButton = new Rectangle(960/2-100,540*7/10-50,200,100);
+		returnButton = new Rectangle(surface.width/2-100,surface.height*7/10-50,200,100);
 	}
 	
 	/**
@@ -115,9 +115,12 @@ public class GameScreen extends Screen {
 	 */
 	public void draw()
 	{
-		surface.pushMatrix();
+		surface.push();
 		
-		surface.background(110);
+		returnButton = new Rectangle(surface.width/2-returnButton.width/2,surface.height*7/10-returnButton.height/2,200,100);
+		
+		//bg color
+		surface.background(237, 234, 229);
 		
 		for(Checkpoint c : checkpoints)
 		{
@@ -137,7 +140,10 @@ public class GameScreen extends Screen {
 				p.draw(surface);
 			}
 		}
-		
+		surface.noStroke();
+		//obstacle color
+		surface.fill(150, 148, 143);
+		//surface.fill(255);
 		for (Shape s : obstacles) {
 			if (s instanceof Rectangle) {
 				Rectangle r = (Rectangle)s;
@@ -145,11 +151,15 @@ public class GameScreen extends Screen {
 			}
 		}
 		
-		String scoreBoard = "Scores:\nP1: " + p1Score + ", P1C: " + p1.getCheckpoint() 
-							+ "\nP2: " + p2Score + ", P2C: " + p2.getCheckpoint();
-		surface.text(scoreBoard, surface.width/2 - 20, surface.height/2 + 20);
+		//scoreboard color
+		surface.fill(99, 98, 95);
+		String scoreboard = "Scores:\nP1: " + p1Score + ", P1C: " + p1.getCheckpoint() + ", Boosts Left: " + p1.getBoost() 
+							+ "\nP2: " + p2Score + ", P2C: " + p2.getCheckpoint() + ", Boosts Left: " + p2.getBoost();
+		float scoreboardLength = surface.textWidth(scoreboard);
+
+		surface.text(scoreboard, surface.width/2 - scoreboardLength/2 - 20, surface.height/2 + 20);
 		
-		surface.popMatrix();
+		surface.pop();
 		
 		p1.act(obstacles, p2);
 		p2.act(obstacles, p1);
@@ -193,7 +203,8 @@ public class GameScreen extends Screen {
 				{
 					if(p1.intersects(c) && p2.intersects(c))
 					{
-						c.setColor(new Color(224,224,224));
+						//both normal checkpoint color
+						c.setColor(new Color(159, 237, 215));
 						if(p1.getCheckpoint() == c.getNum() - 1)
 						{
 							p1.setCheckpoint(c.getNum());
@@ -205,7 +216,8 @@ public class GameScreen extends Screen {
 					}
 					else if(p1.intersects(c))
 					{
-						c.setColor(new Color(252, 240, 3));
+						//p1 normal checkpoint color
+						c.setColor(new Color(254, 249, 199));
 						if(p1.getCheckpoint() == c.getNum() - 1)
 						{
 							p1.setCheckpoint(c.getNum());
@@ -213,7 +225,8 @@ public class GameScreen extends Screen {
 					}
 					else if(p2.intersects(c))
 					{
-						c.setColor(new Color(53, 252, 3));
+						//p2 normal checkpoint color
+						c.setColor(new Color(171, 237, 159));
 						if(p2.getCheckpoint() == c.getNum() - 1)
 						{
 							p2.setCheckpoint(c.getNum());
@@ -221,14 +234,16 @@ public class GameScreen extends Screen {
 					}
 					else
 					{
-						c.setColor(new Color(255,255,255));
+						//default normal checkpoint color
+						c.setColor(new Color(199, 196, 191));
 					}
 				}
 				else
 				{
 					if(p1.intersects(c) && p2.intersects(c))
 					{
-						c.setColor(new Color(255, 0, 0));
+						//both start/finish checkpoint color
+						c.setColor(new Color(237, 159, 159));
 						if(p1.getCheckpoint() == 3)
 						{
 							if(win == 0)
@@ -248,7 +263,8 @@ public class GameScreen extends Screen {
 					}
 					else if(p1.intersects(c))
 					{
-						c.setColor(new Color(252, 240, 3));
+						//p1 start/finish checkpoint color
+						c.setColor(new Color(254, 249, 199));
 						if(p1.getCheckpoint() == 3)
 						{
 							if(win == 0)
@@ -260,7 +276,8 @@ public class GameScreen extends Screen {
 					}
 					else if(p2.intersects(c))
 					{
-						c.setColor(new Color(53, 252, 3));
+						//p2 start/finish checkpoint color
+						c.setColor(new Color(171, 237, 159));
 						if(p2.getCheckpoint() == 3)
 						{
 							if(win == 0)
@@ -272,7 +289,8 @@ public class GameScreen extends Screen {
 					}
 					else
 					{
-						c.setColor(new Color(224,224,224));
+						//default start/finish checkpoint color
+						c.setColor(new Color(110, 91, 91));
 					}
 				}
 			}
@@ -378,12 +396,15 @@ public class GameScreen extends Screen {
 			{
 				surface.push();
 				
-				surface.fill(255,0,0);
+				surface.noStroke();
+				surface.fill(255);
+				surface.rect(surface.width/2 - 2, surface.height*2/8 - 15, 50, 20, 5, 5, 5, 5);
+				surface.fill(99, 98, 95);
 				surface.text("P1 WINS", surface.width/2, surface.height*2/8);
 				
 				surface.fill(255);
 				surface.rect(returnButton.x, returnButton.y, returnButton.width, returnButton.height, 10, 10, 10, 10);
-				surface.fill(0);
+				surface.fill(99, 98, 95);
 				String buttonText = "< Back >";
 				float w = surface.textWidth(buttonText);
 				float h = surface.textWidth(buttonText)/buttonText.length();
@@ -394,12 +415,16 @@ public class GameScreen extends Screen {
 			else if(win == 2)
 			{
 				surface.push();
-				surface.fill(255,0,0);
+				
+				surface.noStroke();
+				surface.fill(255);
+				surface.rect(surface.width/2 - 2, surface.height*2/8 - 15, 50, 20, 5, 5, 5, 5);
+				surface.fill(99, 98, 95);
 				surface.text("P2 WINS", surface.width/2, surface.height*2/8);
 				
 				surface.fill(255);
 				surface.rect(returnButton.x, returnButton.y, returnButton.width, returnButton.height, 10, 10, 10, 10);
-				surface.fill(0);
+				surface.fill(99, 98, 95);
 				String buttonText = "< Back >";
 				float w = surface.textWidth(buttonText);
 				float h = surface.textWidth(buttonText)/buttonText.length();

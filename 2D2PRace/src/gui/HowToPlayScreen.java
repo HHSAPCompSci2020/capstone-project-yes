@@ -7,7 +7,7 @@ import java.awt.Rectangle;
  * Used by DrawingSurface to draw the specified screen, which is to show the player a visual of how the game functions
  * 
  * @author Connor Chow
- * @version 5/14/21
+ * @version 5/21/21
  */
 public class HowToPlayScreen extends Screen {
 
@@ -23,7 +23,8 @@ public class HowToPlayScreen extends Screen {
 		super();
 		this.surface = surface;
 		
-		backButton = new Rectangle(960/2-100,540/2-50,200,100);
+		backButton = new Rectangle(this.surface.width/2-100,this.surface.height/2-50,200,100);
+
 	}
 	
 	/**
@@ -32,6 +33,9 @@ public class HowToPlayScreen extends Screen {
 	public void draw()
 	{
 		surface.pushMatrix();
+		
+		backButton = new Rectangle(surface.width/2-backButton.width/2,surface.height*5/8-backButton.height/2,200,100);
+		
 		surface.background(255);
 		surface.fill(0);
 		String menuTitle = "How to play!\n" +

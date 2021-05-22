@@ -200,6 +200,11 @@ public class Car extends MovingImage {
 		return yVelocity;
 	}
 	
+	public int getBoost()
+	{
+		return boost;
+	}
+	
 	public int getCheckpoint()
 	{
 		return checkpoint;
