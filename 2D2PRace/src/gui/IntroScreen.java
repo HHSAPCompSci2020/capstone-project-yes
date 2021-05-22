@@ -54,7 +54,7 @@ public class IntroScreen extends Screen {
 		startButton = new Rectangle(surface.width/2-startButton.width/2,surface.height/2-startButton.height/2,200,100);
 		surface.rect(startButton.x, startButton.y, startButton.width, startButton.height, 10, 10, 10, 10);
 		surface.fill(99 + openButtonNum, 98 + openButtonNum, 95 + openButtonNum);
-		String buttonText = "< Open >";
+		String buttonText = "Play";
 		float w = surface.textWidth(buttonText);
 		float h = surface.textWidth(buttonText)/buttonText.length();
 		surface.text(buttonText, startButton.x+startButton.width/2-w/2, startButton.y+startButton.height/2+h/2);
