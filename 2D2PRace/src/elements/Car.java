@@ -20,7 +20,7 @@ import processing.core.PImage;
 public class Car extends MovingImage {
 	
 	private double speed, friction, xVelocity, yVelocity;
-	private int checkpoint;
+	private int checkpoint, boost;
 	private boolean onAWall;
 	
 	/**
@@ -38,6 +38,7 @@ public class Car extends MovingImage {
 		friction = 0.85;
 		
 		checkpoint = 0;
+		boost = 3;
 		
 		onAWall = false;
 	}
@@ -63,7 +64,11 @@ public class Car extends MovingImage {
 	 * Boosts the car in the direction the car is facing
 	 */
 	public void boost() {
-		speed = 40;
+		if(speed >= 13 && speed < 14 && boost > 0)
+		{
+			speed = 80;
+			boost--;
+		}
 	}
 	
 	/**

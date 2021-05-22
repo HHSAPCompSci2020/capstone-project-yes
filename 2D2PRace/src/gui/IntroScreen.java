@@ -7,13 +7,13 @@ import java.awt.Rectangle;
  * that is the default screen to display when the game is opened
  * 
  * @author Connor Chow
- * @version 5/7/21
+ * @version 5/21/21
  */
 public class IntroScreen extends Screen {
 	
 	private DrawingSurface surface;
 	
-	private Rectangle startButton;
+	private Rectangle startButton,backgroundButton;
 	/**
 	 * Creates a new IntroScreen that takes in the DrawingSurface
 	 * @param surface DrawingSurface that will display the graphics
@@ -24,8 +24,10 @@ public class IntroScreen extends Screen {
 		this.surface = surface;
 		
 		startButton = new Rectangle(this.surface.width/2-100,this.surface.height/2-50,200,100);
-		System.out.println(this.surface.width);
-		System.out.println(this.surface.displayWidth);
+		backgroundButton = new Rectangle(0,0,10,10);
+
+//		System.out.println(this.surface.width);
+//		System.out.println(this.surface.displayWidth);
 	}
 	
 	/**
@@ -35,10 +37,12 @@ public class IntroScreen extends Screen {
 	{
 		surface.pushMatrix();
 		surface.background(0,65,175);
+		surface.fill(0,65,175);
+		surface.noStroke();
+		surface.rect(backgroundButton.x, backgroundButton.y, backgroundButton.width, backgroundButton.height);
 		surface.fill(255);
-		
+		surface.stroke(0);
 		startButton = new Rectangle(surface.width/2-startButton.width/2,surface.height/2-startButton.height/2,200,100);
-
 		surface.rect(startButton.x, startButton.y, startButton.width, startButton.height, 10, 10, 10, 10);
 		surface.fill(0);
 		String buttonText = "< Open >";
@@ -63,6 +67,11 @@ public class IntroScreen extends Screen {
 	 */
 	public void mousePressed() {
 		Point p = new Point(surface.mouseX,surface.mouseY);
+		if(backgroundButton.contains(p))
+		{
+			surface.setImageChanger(true);
+			System.out.println("~click~");
+		}
 		if (startButton.contains(p))
 			surface.switchScreen(ScreenSwitcher.MENUSCREEN);
 	}

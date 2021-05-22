@@ -7,7 +7,7 @@ import java.awt.Rectangle;
  * player the menu that can access the game as well as different options
  * 
  * @author Connor Chow
- * @version 5/20/21
+ * @version 5/21/21
  */
 public class MenuScreen extends Screen {
 
@@ -71,7 +71,6 @@ public class MenuScreen extends Screen {
 		Point p = new Point(surface.mouseX,surface.mouseY);
 		if (gameButton.contains(p))
 		{
-			System.out.println("Run");
 			surface.refreshGameScreen();
 			surface.switchScreen(ScreenSwitcher.GAMESCREEN);
 		}

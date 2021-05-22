@@ -8,7 +8,7 @@ import processing.core.PApplet;
  * Used by Main class/method to draw the game that is projected onto the screen
  * 
  * @author Connor Chow
- * @version 5/7/21
+ * @version 5/21/21
  */
 public class DrawingSurface extends PApplet implements ScreenSwitcher {
 
@@ -16,6 +16,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	
 	private Screen activeScreen;
 	private ArrayList<Screen> screens;
+	private boolean imgChanger;
 	
 	/**
 	 * Create a new DrawingSurface that fills in the different screens
@@ -37,6 +38,8 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		screens.add(gameScreen);
 		
 		activeScreen = screens.get(ScreenSwitcher.INTROSCREEN);
+		
+		imgChanger = false;
 	}
 	
 	/**
@@ -128,5 +131,13 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	public void switchScreen(int i) {
 		activeScreen = screens.get(i);
 	}
+	
+	// ----------------------
 
+	public void setImageChanger(boolean b) {
+		imgChanger = b;
+	}
+	public boolean imageChanger() {
+		return imgChanger;
+	}
 }

@@ -93,13 +93,16 @@ public class GameScreen extends Screen {
 		
 //		p1 = new Car(p1Images, 215, 340, 45, 45);
 //		p2 = new Car(p2Images, 215, 400, 45, 45);
-		p1 = new Car(surface.loadImage("car1-1.png"), 215, 340, 35, 35);
-		p1 = new Car(surface.loadImage("fidgetspinner1.png"), 215, 340, 35, 35);
-		p1 = new Car(surface.loadImage("red.png"), 215, 340, 35, 35);
-
-		p2 = new Car(surface.loadImage("car2-1.png"), 215, 400, 35, 35);
-		p2 = new Car(surface.loadImage("fidgetspinner2.png"), 215, 400, 35, 35);
-		p2 = new Car(surface.loadImage("cyan.png"), 215, 400, 35, 35);
+		if(surface.imageChanger()) {
+			p1 = new Car(surface.loadImage("fidgetspinner1.png"), 215, 340, 35, 35);
+			p2 = new Car(surface.loadImage("fidgetspinner2.png"), 215, 400, 35, 35);
+			p1.setMode(true);
+			p2.setMode(true);
+		}
+		else {
+			p1 = new Car(surface.loadImage("car1-1.png"), 215, 340, 35, 35);
+			p2 = new Car(surface.loadImage("car2-1.png"), 215, 400, 35, 35);
+		}
 
 		surface.loadImage("projectile.png");
 	}
@@ -289,10 +292,6 @@ public class GameScreen extends Screen {
 				//System.out.println("turn right");
 				p1.turn(5);
 			}
-			else if (!(surface.isPressed(KeyEvent.VK_A)) && !(surface.isPressed(KeyEvent.VK_D)))
-			{
-				//System.out.println("forward");
-			}
 			if (surface.isPressed(KeyEvent.VK_W))
 			{
 				p1.accelerate();
@@ -303,12 +302,23 @@ public class GameScreen extends Screen {
 			}
 			if (surface.isPressed(KeyEvent.VK_C))
 			{
-				//System.out.println("p1 shot");
-				Projectile p = new Projectile(surface.loadImage("red.png"),
+				
+				if(surface.imageChanger())
+				{
+					Projectile p = new Projectile(surface.loadImage("red.png"),
 						(int)((p1.getCenterX()) + 40*Math.cos(Math.toRadians(p1.getDirection()))),
 						(int)(p1.getCenterY() + 40*Math.sin(Math.toRadians(p1.getDirection()))),
-						(int)(40*Math.cos(Math.toRadians(p1.getDirection()))),(int)(40*Math.sin(Math.toRadians(p1.getDirection()))));			
-				projectiles.add(p);
+						(int)(40*Math.cos(Math.toRadians(p1.getDirection()))),(int)(40*Math.sin(Math.toRadians(p1.getDirection()))));	
+					projectiles.add(p);
+				}
+				else {
+					//System.out.println("p1 shot");
+					Projectile p = new Projectile(surface.loadImage("projectile.png"),
+							(int)((p1.getCenterX()) + 40*Math.cos(Math.toRadians(p1.getDirection()))),
+							(int)(p1.getCenterY() + 40*Math.sin(Math.toRadians(p1.getDirection()))),
+							(int)(40*Math.cos(Math.toRadians(p1.getDirection()))),(int)(40*Math.sin(Math.toRadians(p1.getDirection()))));
+					projectiles.add(p);
+				}
 			}
 			if (surface.isPressed(KeyEvent.VK_LEFT))
 			{
@@ -328,12 +338,22 @@ public class GameScreen extends Screen {
 			}
 			if (surface.isPressed(KeyEvent.VK_PERIOD))
 			{
-				//System.out.println("p2 shot");
-				Projectile p = new Projectile(surface.loadImage("projectile.png"),
-						(int)((p2.getCenterX()) + 40*Math.cos(Math.toRadians(p2.getDirection()))),
-						(int)(p2.getCenterY() + 40*Math.sin(Math.toRadians(p2.getDirection()))),
-						(int)(40*Math.cos(Math.toRadians(p2.getDirection()))),(int)(40*Math.sin(Math.toRadians(p2.getDirection()))));
-				projectiles.add(p);
+				if(surface.imageChanger())
+				{
+					Projectile p = new Projectile(surface.loadImage("cyan.png"),
+							(int)((p2.getCenterX()) + 40*Math.cos(Math.toRadians(p2.getDirection()))),
+							(int)(p2.getCenterY() + 40*Math.sin(Math.toRadians(p2.getDirection()))),
+							(int)(40*Math.cos(Math.toRadians(p2.getDirection()))),(int)(40*Math.sin(Math.toRadians(p2.getDirection()))));
+					projectiles.add(p);
+				}
+				else {
+					//System.out.println("p2 shot");
+					Projectile p = new Projectile(surface.loadImage("projectile.png"),
+							(int)((p2.getCenterX()) + 40*Math.cos(Math.toRadians(p2.getDirection()))),
+							(int)(p2.getCenterY() + 40*Math.sin(Math.toRadians(p2.getDirection()))),
+							(int)(40*Math.cos(Math.toRadians(p2.getDirection()))),(int)(40*Math.sin(Math.toRadians(p2.getDirection()))));
+					projectiles.add(p);
+				}
 			}	
 			if(p1Score >= 5)
 			{

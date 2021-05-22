@@ -17,6 +17,7 @@ public class MovingImage extends Rectangle2D.Double {
 	private PImage image;
 	private int imageUsed;
 	private double dir;
+	private boolean setMode;
 
 	/**
 	 * MovingImage constructor
@@ -31,6 +32,7 @@ public class MovingImage extends Rectangle2D.Double {
 		image = img;
 		imageUsed = 0;
 		dir = 0;
+		setMode = false;
 	}
 	
 	/**
@@ -67,8 +69,13 @@ public class MovingImage extends Rectangle2D.Double {
 	public void draw(PApplet g) {
 		g.push();
 		g.translate((float)(x+width/2), (float)(y+height/2));
-		g.rotate((float)dir);
-		//g.rotate(g.radians((float)dir));
+		if(setMode)
+		{
+			g.rotate((float)dir);
+		}
+		else {
+			g.rotate(g.radians((float)dir));
+		}
 		g.image(image,(int)(-width/2),(int)(-height/2),(int)width,(int)height);
 		g.pop();
 	}
@@ -79,5 +86,9 @@ public class MovingImage extends Rectangle2D.Double {
 	
 	public double getDirection() {
 		return dir;
+	}
+	
+	public void setMode(boolean b) {
+		setMode = b;
 	}
 }
