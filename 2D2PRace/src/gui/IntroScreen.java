@@ -9,7 +9,7 @@ import processing.core.PFont;
  * that is the default screen to display when the game is opened
  * 
  * @author Connor Chow
- * @version 5/21/21
+ * @version 5/22/21
  */
 public class IntroScreen extends Screen {
 	
@@ -60,23 +60,22 @@ public class IntroScreen extends Screen {
 		{
 			openButtonNum -= 3;
 		}
-		
-		font1 = surface.createFont("STIXGeneral-Bold", 26);
+		font1 = surface.createFont("Anurati-Regular.otf", 26);
 		surface.textFont(font1);
 		surface.fill(255 - openButtonNum);
 		startButton = new Rectangle(surface.width/2-startButton.width/2,surface.height/2-startButton.height/2,200,100);
 		surface.rect(startButton.x, startButton.y, startButton.width, startButton.height, 10, 10, 10, 10);
 		surface.fill(99 + openButtonNum, 98 + openButtonNum, 95 + openButtonNum);
-		String buttonText = "Play";
+		String buttonText = "PLAY";
 		float w = surface.textWidth(buttonText);
 		float h = surface.textWidth(buttonText)/buttonText.length();
 		surface.text(buttonText, startButton.x+startButton.width/2-w/2, startButton.y+startButton.height/2+h/2);
 
-		font2 = surface.createFont("YuMin_36pKn-Demibold", 12);
+		font2 = surface.createFont("Moon2.0-Regular.otf", 12);
 		surface.textFont(font2);
 		surface.fill(99, 98, 95);
-		String title = "2D2PRace";
-		String subtitle = "By: Alex and Connor";
+		String title = "2d2prace";
+		String subtitle = "by: alex and connor";
 		
 		w = surface.textWidth(title);
 		surface.text(title, surface.width/2-w/2, surface.height/8);

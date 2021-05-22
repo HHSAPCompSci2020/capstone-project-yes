@@ -17,7 +17,7 @@ import processing.core.PImage;
  * player the game interface
  * 
  * @author Connor Chow
- * @version 5/21/21
+ * @version 5/22/21
  */
 public class GameScreen extends Screen {
 
@@ -155,8 +155,8 @@ public class GameScreen extends Screen {
 		
 		//scoreboard color
 		surface.fill(99 + returnButtonNum, 98 + returnButtonNum, 95 + returnButtonNum);
-		String scoreboard = "Scores:\nP1: " + p1Score + ", P1C: " + p1.getCheckpoint() + ", Boosts Left: " + p1.getBoost() 
-							+ "\nP2: " + p2Score + ", P2C: " + p2.getCheckpoint() + ", Boosts Left: " + p2.getBoost();
+		String scoreboard = "scores:\np1: " + p1Score + ", p1c: " + p1.getCheckpoint() + ", boosts left: " + p1.getBoost() 
+							+ "\np2: " + p2Score + ", p2c: " + p2.getCheckpoint() + ", boosts left: " + p2.getBoost();
 		float scoreboardLength = surface.textWidth(scoreboard);
 
 		surface.text(scoreboard, surface.width/2 - scoreboardLength/2 - 20, surface.height/2 + 20);
@@ -415,7 +415,7 @@ public class GameScreen extends Screen {
 				surface.fill(255 - returnButtonNum);
 				surface.rect(returnButton.x, returnButton.y, returnButton.width, returnButton.height, 10, 10, 10, 10);
 				surface.fill(99 + returnButtonNum, 98 + returnButtonNum, 95 + returnButtonNum);
-				String buttonText = "< Back >";
+				String buttonText = "back";
 				float w = surface.textWidth(buttonText);
 				float h = surface.textWidth(buttonText)/buttonText.length();
 				surface.text(buttonText, returnButton.x+returnButton.width/2-w/2, returnButton.y+returnButton.height/2+h/2);
@@ -443,7 +443,7 @@ public class GameScreen extends Screen {
 				surface.fill(255 - returnButtonNum);
 				surface.rect(returnButton.x, returnButton.y, returnButton.width, returnButton.height, 10, 10, 10, 10);
 				surface.fill(99 + returnButtonNum, 98 + returnButtonNum, 95 + returnButtonNum);
-				String buttonText = "< Back >";
+				String buttonText = "back";
 				float w = surface.textWidth(buttonText);
 				float h = surface.textWidth(buttonText)/buttonText.length();
 				surface.text(buttonText, returnButton.x+returnButton.width/2-w/2, returnButton.y+returnButton.height/2+h/2);

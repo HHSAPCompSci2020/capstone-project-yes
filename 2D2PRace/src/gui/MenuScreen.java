@@ -7,7 +7,7 @@ import java.awt.Rectangle;
  * player the menu that can access the game as well as different options
  * 
  * @author Connor Chow
- * @version 5/21/21
+ * @version 5/22/21
  */
 public class MenuScreen extends Screen {
 
@@ -41,7 +41,7 @@ public class MenuScreen extends Screen {
 		howToPlayButton = new Rectangle(this.surface.width*1/4-howToPlayButton.width/2,this.surface.height/2-howToPlayButton.height/2,200,100);
 		
 		surface.fill(99, 98, 95);
-		String menuTitle = "Menu";
+		String menuTitle = "menu";
 		float w = surface.textWidth(menuTitle);
 		surface.text(menuTitle, surface.width/2-w/2, surface.height/8);
 		
@@ -63,7 +63,7 @@ public class MenuScreen extends Screen {
 		surface.fill(255 - gameButtonNum);
 		surface.rect(gameButton.x, gameButton.y, gameButton.width, gameButton.height, 10, 10, 10, 10);
 		surface.fill(99 + gameButtonNum, 98 + gameButtonNum, 95 + gameButtonNum);
-		String gameButtonText = "Start";
+		String gameButtonText = "start";
 		w = surface.textWidth(gameButtonText);
 		float h = surface.textWidth(gameButtonText)/gameButtonText.length();
 		surface.text(gameButtonText, gameButton.x+gameButton.width/2-w/2, gameButton.y+gameButton.height/2+h/2);
@@ -71,7 +71,7 @@ public class MenuScreen extends Screen {
 		surface.fill(255 - howToPlayButtonNum);
 		surface.rect(howToPlayButton.x, howToPlayButton.y, howToPlayButton.width, howToPlayButton.height, 10, 10, 10, 10);
 		surface.fill(99 + howToPlayButtonNum, 98 + howToPlayButtonNum, 95 + howToPlayButtonNum);
-		String howToPlayText = "How To Play";
+		String howToPlayText = "how to play";
 		w = surface.textWidth(howToPlayText);
 		h = surface.textWidth(howToPlayText)/howToPlayText.length();
 		surface.text(howToPlayText, howToPlayButton.x+howToPlayButton.width/2-w/2, howToPlayButton.y+howToPlayButton.height/2+h/2);
