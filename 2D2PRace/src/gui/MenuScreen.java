@@ -87,11 +87,15 @@ public class MenuScreen extends Screen {
 		Point p = new Point(surface.mouseX,surface.mouseY);
 		if (gameButton.contains(p))
 		{
+			surface.playSound(1);
 			surface.refreshGameScreen();
 			surface.switchScreen(ScreenSwitcher.GAMESCREEN);
 		}
 		else if (howToPlayButton.contains(p))
+		{
+			surface.playSound(1);
 			surface.switchScreen(ScreenSwitcher.HOWTOPLAYSCREEN);
+		}
 	}
 	
 }

@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import processing.core.PFont;
+
 /**
  * Used by DrawingSurface to draw the specified screen, which is for creating the intro screen 
  * that is the default screen to display when the game is opened
@@ -19,6 +20,7 @@ public class IntroScreen extends Screen {
 	private int openButtonNum;
 	
 	private PFont font1, font2;
+
 	/**
 	 * Creates a new IntroScreen that takes in the DrawingSurface
 	 * @param surface DrawingSurface that will display the graphics
@@ -30,7 +32,7 @@ public class IntroScreen extends Screen {
 		
 		startButton = new Rectangle(this.surface.width/2-100,this.surface.height/2-50,200,100);
 		backgroundButton = new Rectangle(0,0,10,10);
-
+		
 //		System.out.println(this.surface.width);
 //		System.out.println(this.surface.displayWidth);
 	}
@@ -39,7 +41,6 @@ public class IntroScreen extends Screen {
 		
 		String[] fonts = PFont.list();
 		surface.printArray(fonts);
-		
 	}
 	
 	/**
@@ -93,10 +94,15 @@ public class IntroScreen extends Screen {
 		Point p = new Point(surface.mouseX,surface.mouseY);
 		if(backgroundButton.contains(p))
 		{
+			surface.playSound(1);
+			surface.playSound(0);
 			surface.setImageChanger(true);
 			System.out.println("~click~");
 		}
 		if (startButton.contains(p))
+		{
+			surface.playSound(1);
 			surface.switchScreen(ScreenSwitcher.MENUSCREEN);
+		}
 	}
 }

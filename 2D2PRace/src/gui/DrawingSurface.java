@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import processing.sound.SoundFile;
 /**
  * Used by Main class/method to draw the game that is projected onto the screen
  * 
@@ -17,6 +18,9 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	private Screen activeScreen;
 	private ArrayList<Screen> screens;
 	private boolean imgChanger;
+	
+	private String[] soundFileNames;
+	private SoundFile[] sounds;
 	
 	/**
 	 * Create a new DrawingSurface that fills in the different screens
@@ -40,14 +44,28 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		activeScreen = screens.get(ScreenSwitcher.INTROSCREEN);
 		
 		imgChanger = false;
+		
+		soundFileNames = new String[] {"data/bgMusic.mp3", "data/mouseClick.mp3", "data/victorySound.mp3"};
+		sounds = new SoundFile[soundFileNames.length];
 	}
 	
 	/**
 	 * Sets up each screen
 	 */
 	public void setup() {
+		push();
+		background(255);
+		fill(0);
+		textSize(10);
+		text("Loading",50,50,width - 100,500);
+		pop();
 		for (Screen s : screens)
 			s.setup();
+		loadNextSong();
+		sounds[0].amp((float) 0.1);
+		sounds[1].amp((float) 0.1);
+		sounds[2].amp((float) 0.1);
+
 	}
 
 	/**
@@ -139,5 +157,19 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	}
 	public boolean imageChanger() {
 		return imgChanger;
+	}
+	
+	
+	public void loadNextSong() {
+		for (int loadIndex = 0; loadIndex < soundFileNames.length; loadIndex++) {
+			sounds[loadIndex] = new SoundFile(this, soundFileNames[loadIndex]);
+		}
+	}
+	public void playSound(int i) {
+		sounds[i].cue(0);
+		sounds[i].play();
+	}
+	public void stopSound(int i) {
+		sounds[i].stop();
 	}
 }

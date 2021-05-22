@@ -80,6 +80,9 @@ public class HowToPlayScreen extends Screen {
 	public void mousePressed() {
 		Point p = new Point(surface.mouseX,surface.mouseY);
 		if (backButton.contains(p))
+		{
+			surface.playSound(1);
 			surface.switchScreen(ScreenSwitcher.MENUSCREEN);
+		}
 	}
 }

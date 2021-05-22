@@ -377,6 +377,7 @@ public class GameScreen extends Screen {
 			}	
 			if(p1Score >= 5)
 			{
+				surface.playSound(2);
 				win = 1;
 //				p1.setCheckpoint(0);
 //				p2.setCheckpoint(0);
@@ -385,6 +386,7 @@ public class GameScreen extends Screen {
 			}
 			else if(p2Score >= 5)
 			{
+				surface.playSound(2);
 				win = 2;
 //				p1.setCheckpoint(0);
 //				p2.setCheckpoint(0);
@@ -423,7 +425,7 @@ public class GameScreen extends Screen {
 				surface.pop();
 			}
 			else if(win == 2)
-			{
+			{				
 				surface.push();
 				
 				Point p = new Point(surface.mouseX,surface.mouseY);
@@ -470,7 +472,10 @@ public class GameScreen extends Screen {
 		Point p = new Point(surface.mouseX,surface.mouseY);
 		if (returnButton.contains(p))
 			if(win != 0)
+			{
+				surface.playSound(1);
 				surface.switchScreen(ScreenSwitcher.MENUSCREEN);
+			}
 	}
 
 }
