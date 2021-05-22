@@ -14,6 +14,8 @@ public class HowToPlayScreen extends Screen {
 	private DrawingSurface surface;
 	
 	private Rectangle backButton;
+	private int backButtonNum;
+	
 	/**
 	 * Creates a new HowToPlayScreen that takes in the DrawingSurface
 	 * @param surface DrawingSurface that will display the graphics
@@ -52,10 +54,17 @@ public class HowToPlayScreen extends Screen {
 		float w = surface.textWidth(menuTitle);
 		surface.text(menuTitle, surface.width/2-w/2, surface.height/8);
 		
+		Point p = new Point(surface.mouseX,surface.mouseY);
+		if (backButton.contains(p) && backButtonNum < 48)
+			backButtonNum += 3;
+		else if(!backButton.contains(p) && backButtonNum > 0)
+		{
+			backButtonNum -= 3;
+		}
 		
-		surface.fill(255);
+		surface.fill(255 - backButtonNum);
 		surface.rect(backButton.x, backButton.y, backButton.width, backButton.height, 10, 10, 10, 10);
-		surface.fill(99, 98, 95);
+		surface.fill(99 + backButtonNum, 98 + backButtonNum, 95 + backButtonNum);
 		String gameText = "back";
 		w = surface.textWidth(gameText);
 		float h = surface.textWidth(gameText)/gameText.length();

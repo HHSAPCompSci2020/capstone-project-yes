@@ -28,7 +28,7 @@ public class GameScreen extends Screen {
 	private ArrayList<Checkpoint> checkpoints;
 //	private ArrayList<PImage> p1Images, p2Images, projImages;
 	private int p1Score, p2Score, win;
-	private int backButtonNum;
+	private int returnButtonNum;
 	private Rectangle returnButton;
 
 	/**
@@ -43,7 +43,7 @@ public class GameScreen extends Screen {
 		p2Score = 0;
 		win = 0;
 		
-		backButtonNum = 0;
+		returnButtonNum = 0;
 		
 //		p1Images = new ArrayList<PImage>();
 //		p2Images = new ArrayList<PImage>();
@@ -122,7 +122,7 @@ public class GameScreen extends Screen {
 		returnButton = new Rectangle(surface.width/2-returnButton.width/2,surface.height*7/10-returnButton.height/2,200,100);
 		
 		//bg color
-		surface.background(237, 234, 229);
+		surface.background(237 + returnButtonNum, 234 + returnButtonNum, 229 + returnButtonNum);
 
 		for(Checkpoint c : checkpoints)
 		{
@@ -154,7 +154,7 @@ public class GameScreen extends Screen {
 		}
 		
 		//scoreboard color
-		surface.fill(99, 98, 95);
+		surface.fill(99 + returnButtonNum, 98 + returnButtonNum, 95 + returnButtonNum);
 		String scoreboard = "Scores:\nP1: " + p1Score + ", P1C: " + p1.getCheckpoint() + ", Boosts Left: " + p1.getBoost() 
 							+ "\nP2: " + p2Score + ", P2C: " + p2.getCheckpoint() + ", Boosts Left: " + p2.getBoost();
 		float scoreboardLength = surface.textWidth(scoreboard);
@@ -399,22 +399,22 @@ public class GameScreen extends Screen {
 				surface.push();
 				
 				Point p = new Point(surface.mouseX,surface.mouseY);
-				if (returnButton.contains(p) && backButtonNum < 50)
-					backButtonNum += 10;
-				else if(!returnButton.contains(p) && backButtonNum > 0)
+				if (returnButton.contains(p) && returnButtonNum < 48)
+					returnButtonNum += 3;
+				else if(!returnButton.contains(p) && returnButtonNum > 0)
 				{
-					backButtonNum -= 10;
+					returnButtonNum -= 3;
 				}
 				
 				surface.noStroke();
-				surface.fill(255);
+				surface.fill(255 - returnButtonNum);
 				surface.rect(surface.width/2 - 2, surface.height*2/8 - 15, 50, 20, 5, 5, 5, 5);
-				surface.fill(99, 98, 95);
+				surface.fill(99 + returnButtonNum, 98 + returnButtonNum, 95 + returnButtonNum);
 				surface.text("P1 WINS", surface.width/2, surface.height*2/8);
 				
-				surface.fill(255-backButtonNum);
+				surface.fill(255 - returnButtonNum);
 				surface.rect(returnButton.x, returnButton.y, returnButton.width, returnButton.height, 10, 10, 10, 10);
-				surface.fill(99+backButtonNum, 98+backButtonNum, 95+backButtonNum);
+				surface.fill(99 + returnButtonNum, 98 + returnButtonNum, 95 + returnButtonNum);
 				String buttonText = "< Back >";
 				float w = surface.textWidth(buttonText);
 				float h = surface.textWidth(buttonText)/buttonText.length();
@@ -427,22 +427,22 @@ public class GameScreen extends Screen {
 				surface.push();
 				
 				Point p = new Point(surface.mouseX,surface.mouseY);
-				if (returnButton.contains(p) && backButtonNum < 50)
-					backButtonNum += 10;
-				else if(!returnButton.contains(p) && backButtonNum > 0)
+				if (returnButton.contains(p) && returnButtonNum < 48)
+					returnButtonNum += 3;
+				else if(!returnButton.contains(p) && returnButtonNum > 0)
 				{
-					backButtonNum -= 10;
+					returnButtonNum -= 3;
 				}
 				
 				surface.noStroke();
-				surface.fill(255);
+				surface.fill(255 - returnButtonNum);
 				surface.rect(surface.width/2 - 2, surface.height*2/8 - 15, 50, 20, 5, 5, 5, 5);
-				surface.fill(99, 98, 95);
+				surface.fill(99 + returnButtonNum, 98 + returnButtonNum, 95 + returnButtonNum);
 				surface.text("P2 WINS", surface.width/2, surface.height*2/8);
 				
-				surface.fill(255);
+				surface.fill(255 - returnButtonNum);
 				surface.rect(returnButton.x, returnButton.y, returnButton.width, returnButton.height, 10, 10, 10, 10);
-				surface.fill(99, 98, 95);
+				surface.fill(99 + returnButtonNum, 98 + returnButtonNum, 95 + returnButtonNum);
 				String buttonText = "< Back >";
 				float w = surface.textWidth(buttonText);
 				float h = surface.textWidth(buttonText)/buttonText.length();

@@ -14,6 +14,8 @@ public class MenuScreen extends Screen {
 	private DrawingSurface surface;
 	
 	private Rectangle gameButton, howToPlayButton;
+	private int gameButtonNum, howToPlayButtonNum;
+	
 	/**
 	 * Creates a new MenuScreen that takes in the DrawingSurface
 	 * @param surface DrawingSurface that will display the graphics
@@ -43,18 +45,32 @@ public class MenuScreen extends Screen {
 		float w = surface.textWidth(menuTitle);
 		surface.text(menuTitle, surface.width/2-w/2, surface.height/8);
 		
+		Point p = new Point(surface.mouseX,surface.mouseY);
+		if (gameButton.contains(p) && gameButtonNum < 48)
+			gameButtonNum += 3;
+		else if(!gameButton.contains(p) && gameButtonNum > 0)
+		{
+			gameButtonNum -= 3;
+		}
+		if (howToPlayButton.contains(p) && howToPlayButtonNum < 48)
+			howToPlayButtonNum += 3;
+		else if(!howToPlayButton.contains(p) && howToPlayButtonNum > 0)
+		{
+			howToPlayButtonNum -= 3;
+		}
 		
-		surface.fill(255);
+		
+		surface.fill(255 - gameButtonNum);
 		surface.rect(gameButton.x, gameButton.y, gameButton.width, gameButton.height, 10, 10, 10, 10);
-		surface.fill(99, 98, 95);
+		surface.fill(99 + gameButtonNum, 98 + gameButtonNum, 95 + gameButtonNum);
 		String gameButtonText = "Start";
 		w = surface.textWidth(gameButtonText);
 		float h = surface.textWidth(gameButtonText)/gameButtonText.length();
 		surface.text(gameButtonText, gameButton.x+gameButton.width/2-w/2, gameButton.y+gameButton.height/2+h/2);
 		
-		surface.fill(255);
+		surface.fill(255 - howToPlayButtonNum);
 		surface.rect(howToPlayButton.x, howToPlayButton.y, howToPlayButton.width, howToPlayButton.height, 10, 10, 10, 10);
-		surface.fill(99, 98, 95);
+		surface.fill(99 + howToPlayButtonNum, 98 + howToPlayButtonNum, 95 + howToPlayButtonNum);
 		String howToPlayText = "How To Play";
 		w = surface.textWidth(howToPlayText);
 		h = surface.textWidth(howToPlayText)/howToPlayText.length();

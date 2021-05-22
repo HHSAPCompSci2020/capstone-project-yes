@@ -14,6 +14,7 @@ public class IntroScreen extends Screen {
 	private DrawingSurface surface;
 	
 	private Rectangle startButton,backgroundButton;
+	private int openButtonNum;
 	/**
 	 * Creates a new IntroScreen that takes in the DrawingSurface
 	 * @param surface DrawingSurface that will display the graphics
@@ -40,10 +41,19 @@ public class IntroScreen extends Screen {
 		surface.fill(237, 234, 229);
 		surface.noStroke();
 		surface.rect(backgroundButton.x, backgroundButton.y, backgroundButton.width, backgroundButton.height);
-		surface.fill(255);
+		
+		Point p = new Point(surface.mouseX,surface.mouseY);
+		if (startButton.contains(p) && openButtonNum < 48)
+			openButtonNum += 3;
+		else if(!startButton.contains(p) && openButtonNum > 0)
+		{
+			openButtonNum -= 3;
+		}
+		
+		surface.fill(255 - openButtonNum);
 		startButton = new Rectangle(surface.width/2-startButton.width/2,surface.height/2-startButton.height/2,200,100);
 		surface.rect(startButton.x, startButton.y, startButton.width, startButton.height, 10, 10, 10, 10);
-		surface.fill(99, 98, 95);
+		surface.fill(99 + openButtonNum, 98 + openButtonNum, 95 + openButtonNum);
 		String buttonText = "< Open >";
 		float w = surface.textWidth(buttonText);
 		float h = surface.textWidth(buttonText)/buttonText.length();
