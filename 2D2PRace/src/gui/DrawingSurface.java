@@ -62,7 +62,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		for (Screen s : screens)
 			s.setup();
 		loadNextSong();
-		sounds[0].amp((float) 0.1);
+		sounds[0].amp((float) 0.05);
 		sounds[1].amp((float) 0.1);
 		sounds[2].amp((float) 0.1);
 
