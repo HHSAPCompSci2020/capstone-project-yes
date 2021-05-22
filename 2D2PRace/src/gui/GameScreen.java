@@ -39,7 +39,7 @@ public class GameScreen extends Screen {
 	{
 		super();
 		this.surface = surface;
-		p1Score = 4;
+		p1Score = 0;
 		p2Score = 0;
 		win = 0;
 		
