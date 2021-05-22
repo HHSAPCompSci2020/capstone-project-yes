@@ -33,12 +33,12 @@ public class MenuScreen extends Screen {
 	public void draw()
 	{
 		surface.pushMatrix();
-		surface.background(255);
-		surface.fill(0);
+		surface.background(237, 234, 229);
 		
 		gameButton = new Rectangle(surface.width*3/4-gameButton.width/2,surface.height/2-gameButton.height/2,200,100);
 		howToPlayButton = new Rectangle(this.surface.width*1/4-howToPlayButton.width/2,this.surface.height/2-howToPlayButton.height/2,200,100);
 		
+		surface.fill(99, 98, 95);
 		String menuTitle = "Menu";
 		float w = surface.textWidth(menuTitle);
 		surface.text(menuTitle, surface.width/2-w/2, surface.height/8);
@@ -46,7 +46,7 @@ public class MenuScreen extends Screen {
 		
 		surface.fill(255);
 		surface.rect(gameButton.x, gameButton.y, gameButton.width, gameButton.height, 10, 10, 10, 10);
-		surface.fill(0);
+		surface.fill(99, 98, 95);
 		String gameButtonText = "Start";
 		w = surface.textWidth(gameButtonText);
 		float h = surface.textWidth(gameButtonText)/gameButtonText.length();
@@ -54,7 +54,7 @@ public class MenuScreen extends Screen {
 		
 		surface.fill(255);
 		surface.rect(howToPlayButton.x, howToPlayButton.y, howToPlayButton.width, howToPlayButton.height, 10, 10, 10, 10);
-		surface.fill(0);
+		surface.fill(99, 98, 95);
 		String howToPlayText = "How To Play";
 		w = surface.textWidth(howToPlayText);
 		h = surface.textWidth(howToPlayText)/howToPlayText.length();

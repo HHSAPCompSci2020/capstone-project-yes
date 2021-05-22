@@ -36,21 +36,20 @@ public class IntroScreen extends Screen {
 	public void draw()
 	{
 		surface.pushMatrix();
-		surface.background(0,65,175);
-		surface.fill(0,65,175);
+		surface.background(237, 234, 229);
+		surface.fill(237, 234, 229);
 		surface.noStroke();
 		surface.rect(backgroundButton.x, backgroundButton.y, backgroundButton.width, backgroundButton.height);
 		surface.fill(255);
-		surface.stroke(0);
 		startButton = new Rectangle(surface.width/2-startButton.width/2,surface.height/2-startButton.height/2,200,100);
 		surface.rect(startButton.x, startButton.y, startButton.width, startButton.height, 10, 10, 10, 10);
-		surface.fill(0);
+		surface.fill(99, 98, 95);
 		String buttonText = "< Open >";
 		float w = surface.textWidth(buttonText);
 		float h = surface.textWidth(buttonText)/buttonText.length();
 		surface.text(buttonText, startButton.x+startButton.width/2-w/2, startButton.y+startButton.height/2+h/2);
 
-		surface.fill(255);
+		surface.fill(99, 98, 95);
 		String title = "2D2PRace";
 		String subtitle = "By: Alex and Connor";
 		w = surface.textWidth(title);

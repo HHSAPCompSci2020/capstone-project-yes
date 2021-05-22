@@ -36,8 +36,8 @@ public class HowToPlayScreen extends Screen {
 		
 		backButton = new Rectangle(surface.width/2-backButton.width/2,surface.height*5/8-backButton.height/2,200,100);
 		
-		surface.background(255);
-		surface.fill(0);
+		surface.background(237, 234, 229);
+		surface.fill(99, 98, 95);
 		String menuTitle = "How to play!\n" +
 				"\n" +
 				"Mouse - Navigation \r\n" + 
@@ -55,7 +55,7 @@ public class HowToPlayScreen extends Screen {
 		
 		surface.fill(255);
 		surface.rect(backButton.x, backButton.y, backButton.width, backButton.height, 10, 10, 10, 10);
-		surface.fill(0);
+		surface.fill(99, 98, 95);
 		String gameText = "back";
 		w = surface.textWidth(gameText);
 		float h = surface.textWidth(gameText)/gameText.length();
