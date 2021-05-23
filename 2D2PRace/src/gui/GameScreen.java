@@ -124,6 +124,15 @@ public class GameScreen extends Screen {
 		//bg color
 		surface.background(237 + returnButtonNum, 234 + returnButtonNum, 229 + returnButtonNum);
 
+		if(p1Score == 0 && p2Score == 0)
+		{
+			surface.fill(145, 6, 6);
+			surface.rect(420,390,50,25);
+			surface.triangle(470,380,470,425,495,402.5f);
+			surface.rect(420,150,50,25);
+			surface.triangle(420,140,420,185,395,162.5f);
+		}
+		
 		for(Checkpoint c : checkpoints)
 		{
 			if(c instanceof Checkpoint)
