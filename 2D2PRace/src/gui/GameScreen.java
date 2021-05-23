@@ -153,8 +153,8 @@ public class GameScreen extends Screen {
 			}
 		}
 		
-		//scoreboard color
-		surface.fill(99 + returnButtonNum, 98 + returnButtonNum, 95 + returnButtonNum);
+		surface.fill(99 + returnButtonNum, 98 + returnButtonNum, 95 + returnButtonNum); //scoreboard color
+		surface.textLeading(15);
 		String scoreboard = "scores:\np1: " + p1Score + ", p1c: " + p1.getCheckpoint() + ", boosts left: " + p1.getBoost() 
 							+ "\np2: " + p2Score + ", p2c: " + p2.getCheckpoint() + ", boosts left: " + p2.getBoost();
 		float scoreboardLength = surface.textWidth(scoreboard);

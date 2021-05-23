@@ -51,6 +51,7 @@ public class HowToPlayScreen extends Screen {
 				"\'.\' - Player 2 shoot projectile button\r\n" + 
 				"\'/\' - Player 2 boost\r\n" + 
 				"ESC - Pause / Quit\r\n";
+		surface.textLeading(15);
 		float w = surface.textWidth(menuTitle);
 		surface.text(menuTitle, surface.width/2-w/2, surface.height/8);
 		

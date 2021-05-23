@@ -75,6 +75,7 @@ public class IntroScreen extends Screen {
 		font2 = surface.createFont("Moon2.0-Regular.otf", 12);
 		surface.textFont(font2);
 		surface.fill(99, 98, 95);
+		surface.textLeading(15);
 		String title = "2d2prace";
 		String subtitle = "by: alex and connor";
 		
