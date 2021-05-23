@@ -17,7 +17,7 @@ import processing.core.PImage;
  * player the game interface
  * 
  * @author Connor Chow
- * @version 5/22/21
+ * @version 5/23/21
  */
 public class GameScreen extends Screen {
 
@@ -39,8 +39,8 @@ public class GameScreen extends Screen {
 	{
 		super();
 		this.surface = surface;
-		p1Score = 0;
-		p2Score = 0;
+		p1Score = 4;
+		p2Score = 4;
 		win = 0;
 		
 		returnButtonNum = 0;
@@ -155,11 +155,11 @@ public class GameScreen extends Screen {
 		
 		surface.fill(99 + returnButtonNum, 98 + returnButtonNum, 95 + returnButtonNum); //scoreboard color
 		surface.textLeading(15);
-		String scoreboard = "scores:\np1: " + p1Score + ", p1c: " + p1.getCheckpoint() + ", boosts left: " + p1.getBoost() 
-							+ "\np2: " + p2Score + ", p2c: " + p2.getCheckpoint() + ", boosts left: " + p2.getBoost();
+		String scoreboard = "Scores:\nP1: " + p1Score + ", P1C: " + p1.getCheckpoint() + ", Boosts Left: " + p1.getBoost() 
+							+ "\nP2: " + p2Score + ", P2C: " + p2.getCheckpoint() + ", Boosts Left: " + p2.getBoost();
 		float scoreboardLength = surface.textWidth(scoreboard);
-//		surface.text(scoreboard, surface.width/2 - scoreboardLength/2 - 20, surface.height/2 + 20);
-		surface.text(scoreboard, 372, 270);
+		surface.text(scoreboard, 30, 40);
+
 		
 		surface.pop();
 		
@@ -411,15 +411,15 @@ public class GameScreen extends Screen {
 				surface.noStroke();
 				surface.fill(255 - returnButtonNum);
 //				surface.rect(surface.width/2 - 2, surface.height*2/8 - 15, 50, 20, 5, 5, 5, 5);
-				surface.rect(470, 110, 50, 20, 5, 5, 5, 5);
+				surface.rect(450, 110, 70, 20, 5, 5, 5, 5);
 				surface.fill(99 + returnButtonNum, 98 + returnButtonNum, 95 + returnButtonNum);
 //				surface.text("P1 WINS", surface.width/2, surface.height*2/8);
-				surface.text("P1 WINS", 472, 125);
+				surface.text("P1 WINS", 455, 125);
 				
 				surface.fill(255 - returnButtonNum);
 				surface.rect(returnButton.x, returnButton.y, returnButton.width, returnButton.height, 10, 10, 10, 10);
 				surface.fill(99 + returnButtonNum, 98 + returnButtonNum, 95 + returnButtonNum);
-				String buttonText = "back";
+				String buttonText = "Back";
 				float w = surface.textWidth(buttonText);
 				float h = surface.textWidth(buttonText)/buttonText.length();
 				surface.text(buttonText, returnButton.x+returnButton.width/2-w/2, returnButton.y+returnButton.height/2+h/2);
@@ -440,14 +440,14 @@ public class GameScreen extends Screen {
 				
 				surface.noStroke();
 				surface.fill(255 - returnButtonNum);
-				surface.rect(surface.width/2 - 2, surface.height*2/8 - 15, 50, 20, 5, 5, 5, 5);
+				surface.rect(445, 110, 80, 20, 5, 5, 5, 5);
 				surface.fill(99 + returnButtonNum, 98 + returnButtonNum, 95 + returnButtonNum);
-				surface.text("P2 WINS", surface.width/2, surface.height*2/8);
+				surface.text("P2 WINS", 450, 125);
 				
 				surface.fill(255 - returnButtonNum);
 				surface.rect(returnButton.x, returnButton.y, returnButton.width, returnButton.height, 10, 10, 10, 10);
 				surface.fill(99 + returnButtonNum, 98 + returnButtonNum, 95 + returnButtonNum);
-				String buttonText = "back";
+				String buttonText = "Back";
 				float w = surface.textWidth(buttonText);
 				float h = surface.textWidth(buttonText)/buttonText.length();
 				surface.text(buttonText, returnButton.x+returnButton.width/2-w/2, returnButton.y+returnButton.height/2+h/2);

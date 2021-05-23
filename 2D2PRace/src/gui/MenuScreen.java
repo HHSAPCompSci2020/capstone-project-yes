@@ -7,7 +7,7 @@ import java.awt.Rectangle;
  * player the menu that can access the game as well as different options
  * 
  * @author Connor Chow
- * @version 5/22/21
+ * @version 5/23/21
  */
 public class MenuScreen extends Screen {
 
@@ -35,12 +35,12 @@ public class MenuScreen extends Screen {
 	public void draw()
 	{
 		surface.pushMatrix();
-		surface.background(237, 234, 229);
+		surface.background(237 - gameButtonNum/2, 234 - howToPlayButtonNum/2, 229 - gameButtonNum/2);
 		
 		gameButton = new Rectangle(surface.width*3/4-gameButton.width/2,surface.height/2-gameButton.height/2,200,100);
 		howToPlayButton = new Rectangle(this.surface.width*1/4-howToPlayButton.width/2,this.surface.height/2-howToPlayButton.height/2,200,100);
 		
-		surface.fill(99, 98, 95);
+		surface.fill(99 + gameButtonNum, 98 + howToPlayButtonNum, 95 + gameButtonNum);
 		surface.textSize(24);
 		String menuTitle = "MENU";
 		float w = surface.textWidth(menuTitle);
