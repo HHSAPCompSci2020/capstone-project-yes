@@ -40,6 +40,7 @@ public class HowToPlayScreen extends Screen {
 		
 		surface.background(237, 234, 229);
 		surface.fill(99, 98, 95);
+		surface.textLeading(15);
 		String menuTitle = "how to play!\n" +
 				"\n" +
 				"Mouse - Navigation \r\n" + 
@@ -51,7 +52,6 @@ public class HowToPlayScreen extends Screen {
 				"\'.\' - Player 2 shoot projectile button\r\n" + 
 				"\'/\' - Player 2 boost\r\n" + 
 				"ESC - Pause / Quit\r\n";
-		surface.textLeading(15);
 		float w = surface.textWidth(menuTitle);
 		surface.text(menuTitle, surface.width/2-w/2, surface.height/8);
 		
