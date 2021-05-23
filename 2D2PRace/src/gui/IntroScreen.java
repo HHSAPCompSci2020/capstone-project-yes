@@ -50,7 +50,7 @@ public class IntroScreen extends Screen {
 	{
 		surface.pushMatrix();
 		surface.background(135 - openButtonNum/2, 206, 235 - openButtonNum/2);
-		surface.fill(237, 234, 229);
+		surface.fill(135 - openButtonNum/2, 206 + openButtonNum/3, 235 - openButtonNum/2);
 		surface.noStroke();
 		surface.rect(backgroundButton.x, backgroundButton.y, backgroundButton.width, backgroundButton.height);
 		
