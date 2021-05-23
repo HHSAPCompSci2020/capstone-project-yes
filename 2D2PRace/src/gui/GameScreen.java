@@ -65,7 +65,8 @@ public class GameScreen extends Screen {
 		
 		projectiles = new ArrayList<Projectile>();
 		
-		returnButton = new Rectangle(surface.width/2-100,surface.height*7/10-50,200,100);
+//		returnButton = new Rectangle(surface.width/2-100,surface.height*7/10-50,200,100);
+		returnButton = new Rectangle(372,340,200,100);
 	}
 	
 	/**
@@ -118,8 +119,7 @@ public class GameScreen extends Screen {
 	public void draw()
 	{
 		surface.push();
-		
-		returnButton = new Rectangle(surface.width/2-returnButton.width/2,surface.height*7/10-returnButton.height/2,200,100);
+//		returnButton = new Rectangle(surface.width/2-returnButton.width/2,surface.height*7/10-returnButton.height/2,200,100);
 		
 		//bg color
 		surface.background(237 + returnButtonNum, 234 + returnButtonNum, 229 + returnButtonNum);
@@ -158,8 +158,8 @@ public class GameScreen extends Screen {
 		String scoreboard = "scores:\np1: " + p1Score + ", p1c: " + p1.getCheckpoint() + ", boosts left: " + p1.getBoost() 
 							+ "\np2: " + p2Score + ", p2c: " + p2.getCheckpoint() + ", boosts left: " + p2.getBoost();
 		float scoreboardLength = surface.textWidth(scoreboard);
-
-		surface.text(scoreboard, surface.width/2 - scoreboardLength/2 - 20, surface.height/2 + 20);
+//		surface.text(scoreboard, surface.width/2 - scoreboardLength/2 - 20, surface.height/2 + 20);
+		surface.text(scoreboard, 372, 270);
 		
 		surface.pop();
 		
@@ -410,9 +410,11 @@ public class GameScreen extends Screen {
 				
 				surface.noStroke();
 				surface.fill(255 - returnButtonNum);
-				surface.rect(surface.width/2 - 2, surface.height*2/8 - 15, 50, 20, 5, 5, 5, 5);
+//				surface.rect(surface.width/2 - 2, surface.height*2/8 - 15, 50, 20, 5, 5, 5, 5);
+				surface.rect(470, 110, 50, 20, 5, 5, 5, 5);
 				surface.fill(99 + returnButtonNum, 98 + returnButtonNum, 95 + returnButtonNum);
-				surface.text("P1 WINS", surface.width/2, surface.height*2/8);
+//				surface.text("P1 WINS", surface.width/2, surface.height*2/8);
+				surface.text("P1 WINS", 472, 125);
 				
 				surface.fill(255 - returnButtonNum);
 				surface.rect(returnButton.x, returnButton.y, returnButton.width, returnButton.height, 10, 10, 10, 10);
