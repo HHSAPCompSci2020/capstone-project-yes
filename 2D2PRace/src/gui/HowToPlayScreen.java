@@ -41,6 +41,7 @@ public class HowToPlayScreen extends Screen {
 		surface.background(237, 234, 229);
 		surface.fill(99, 98, 95);
 		surface.textLeading(15);
+		surface.textSize(16);
 		String menuTitle = "how to play!\n" +
 				"\n" +
 				"Mouse - Navigation \r\n" + 

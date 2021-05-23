@@ -41,7 +41,8 @@ public class MenuScreen extends Screen {
 		howToPlayButton = new Rectangle(this.surface.width*1/4-howToPlayButton.width/2,this.surface.height/2-howToPlayButton.height/2,200,100);
 		
 		surface.fill(99, 98, 95);
-		String menuTitle = "menu";
+		surface.textSize(24);
+		String menuTitle = "MENU";
 		float w = surface.textWidth(menuTitle);
 		surface.text(menuTitle, surface.width/2-w/2, surface.height/8);
 		
@@ -63,7 +64,8 @@ public class MenuScreen extends Screen {
 		surface.fill(255 - gameButtonNum);
 		surface.rect(gameButton.x, gameButton.y, gameButton.width, gameButton.height, 10, 10, 10, 10);
 		surface.fill(99 + gameButtonNum, 98 + gameButtonNum, 95 + gameButtonNum);
-		String gameButtonText = "start";
+		surface.textSize(18);
+		String gameButtonText = "Start";
 		w = surface.textWidth(gameButtonText);
 		float h = surface.textWidth(gameButtonText)/gameButtonText.length();
 		surface.text(gameButtonText, gameButton.x+gameButton.width/2-w/2, gameButton.y+gameButton.height/2+h/2);
@@ -71,7 +73,7 @@ public class MenuScreen extends Screen {
 		surface.fill(255 - howToPlayButtonNum);
 		surface.rect(howToPlayButton.x, howToPlayButton.y, howToPlayButton.width, howToPlayButton.height, 10, 10, 10, 10);
 		surface.fill(99 + howToPlayButtonNum, 98 + howToPlayButtonNum, 95 + howToPlayButtonNum);
-		String howToPlayText = "how to play";
+		String howToPlayText = "How to Play";
 		w = surface.textWidth(howToPlayText);
 		h = surface.textWidth(howToPlayText)/howToPlayText.length();
 		surface.text(howToPlayText, howToPlayButton.x+howToPlayButton.width/2-w/2, howToPlayButton.y+howToPlayButton.height/2+h/2);

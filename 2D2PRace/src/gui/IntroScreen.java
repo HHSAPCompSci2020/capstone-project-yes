@@ -76,8 +76,9 @@ public class IntroScreen extends Screen {
 		surface.textFont(font2);
 		surface.fill(99, 98, 95);
 		surface.textLeading(15);
-		String title = "2d2prace";
-		String subtitle = "by: alex and connor";
+		surface.textSize(18);
+		String title = "2D2PRace";
+		String subtitle = "By: Alex and Connor";
 		
 		w = surface.textWidth(title);
 		surface.text(title, surface.width/2-w/2, surface.height/8);
