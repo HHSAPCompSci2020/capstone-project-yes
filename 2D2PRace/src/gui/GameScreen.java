@@ -64,10 +64,10 @@ public class GameScreen extends Screen {
 		obstacles.add(new Rectangle(320,140,20,195));
 		
 		checkpoints = new ArrayList<Checkpoint>();
-		checkpoints.add(new Checkpoint(new Color(255,246,3),385,300,50,200,0));
-		checkpoints.add(new Checkpoint(new Color(199, 196, 191),575,300,50,200,1));
-		checkpoints.add(new Checkpoint(new Color(199, 196, 191),575,0,50,300,2));
-		checkpoints.add(new Checkpoint(new Color(199, 196, 191),275,0,50,300,3));
+		checkpoints.add(new Checkpoint(new Color(255,246,3),500,355,30,150,0));
+		checkpoints.add(new Checkpoint(new Color(199, 196, 191),745,0,30,150,1));
+		checkpoints.add(new Checkpoint(new Color(199, 196, 191),215,0,30,150,2));
+		checkpoints.add(new Checkpoint(new Color(199, 196, 191),0,330,120,30,3));
 		
 		projectiles = new ArrayList<Projectile>();
 		
@@ -103,14 +103,14 @@ public class GameScreen extends Screen {
 //		p1 = new Car(p1Images, 215, 340, 45, 45);
 //		p2 = new Car(p2Images, 215, 400, 45, 45);
 		if(surface.imageChanger()) {
-			p1 = new Car(surface.loadImage("fidgetspinner1.png"), 215, 390, 35, 35);
-			p2 = new Car(surface.loadImage("fidgetspinner2.png"), 215, 450, 35, 35);
+			p1 = new Car(surface.loadImage("fidgetspinner1.png"), 285, 400, 35, 35);
+			p2 = new Car(surface.loadImage("fidgetspinner2.png"), 285, 450, 35, 35);
 			p1.setMode(true);
 			p2.setMode(true);
 		}
 		else {
-			p1 = new Car(surface.loadImage("car1-1.png"), 285, 400, 35, 35);
-			p2 = new Car(surface.loadImage("car2-1.png"), 285, 450, 35, 35);
+			p1 = new Car(surface.loadImage("car1-1.png"), 285, 400, 30, 30);
+			p2 = new Car(surface.loadImage("car2-1.png"), 285, 450, 30, 30);
 		}
 
 		surface.loadImage("projectile.png");
@@ -134,10 +134,9 @@ public class GameScreen extends Screen {
 		if(p1Score == 0 && p2Score == 0)
 		{
 			surface.fill(145, 6, 6);
-			surface.rect(420,390,50,25);
-			surface.triangle(470,380,470,425,495,402.5f);
-			surface.rect(420,150,50,25);
-			surface.triangle(420,140,420,185,395,162.5f);
+			surface.rect(420,435,50,15);
+			surface.triangle(470,420,470,465,495,442.5f);
+			
 		}
 		
 		for(Checkpoint c : checkpoints)
@@ -320,13 +319,13 @@ public class GameScreen extends Screen {
 			if (surface.isPressed(KeyEvent.VK_A))
 			{
 				//System.out.println("turn left");
-				p1.turn(-5);
+				p1.turn(-8);
 
 			}
 			if (surface.isPressed(KeyEvent.VK_D))
 			{
 				//System.out.println("turn right");
-				p1.turn(5);
+				p1.turn(8);
 			}
 			if (surface.isPressed(KeyEvent.VK_W))
 			{
@@ -358,11 +357,11 @@ public class GameScreen extends Screen {
 			}
 			if (surface.isPressed(KeyEvent.VK_LEFT))
 			{
-				p2.turn(-5);
+				p2.turn(-8);
 			}
 			if (surface.isPressed(KeyEvent.VK_RIGHT))
 			{
-				p2.turn(5);
+				p2.turn(8);
 			}
 			if (surface.isPressed(KeyEvent.VK_UP))
 			{
