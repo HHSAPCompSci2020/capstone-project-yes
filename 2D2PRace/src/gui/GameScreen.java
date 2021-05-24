@@ -60,7 +60,7 @@ public class GameScreen extends Screen {
 		obstacles.add(new Rectangle(680,160,20,180));
 		obstacles.add(new Rectangle(120,140,700,20));
 		obstacles.add(new Rectangle(120,140,20,260));
-		obstacles.add(new Rectangle(220,350,20,200));
+		obstacles.add(new Rectangle(220,350,20,170));
 		obstacles.add(new Rectangle(320,140,20,195));
 		
 		checkpoints = new ArrayList<Checkpoint>();
