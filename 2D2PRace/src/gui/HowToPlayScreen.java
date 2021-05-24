@@ -48,8 +48,8 @@ public class HowToPlayScreen extends Screen {
 				"Mouse - Navigation \r\n" + 
 				"MB1/LMB - Select\r\n" + 
 				"WASD - Player 1\r\n" + 
-				"\'1\' - Player 1 shoot projectile button\r\n" + 
-				"\'Q\' - Player 1 boost\r\n" + 
+				"\'C\' - Player 1 shoot projectile button\r\n" + 
+				"\'V\' - Player 1 boost\r\n" + 
 				"Arrow Keys - Player 2\r\n" + 
 				"\'.\' - Player 2 shoot projectile button\r\n" + 
 				"\'/\' - Player 2 boost\r\n" + 
