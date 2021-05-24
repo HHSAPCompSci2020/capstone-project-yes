@@ -39,8 +39,6 @@ public class IntroScreen extends Screen {
 	
 	public void setup() {
 		
-		String[] fonts = PFont.list();
-		surface.printArray(fonts);
 	}
 	
 	/**

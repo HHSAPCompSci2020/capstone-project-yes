@@ -50,15 +50,20 @@ public class GameScreen extends Screen {
 //		projImages = new ArrayList<PImage>();
 		
 		obstacles = new ArrayList<Shape>();
-		obstacles.add(new Rectangle(250,250,100,50));
-		obstacles.add(new Rectangle(550,250,100,50));
-		obstacles.add(new Rectangle(0, 0, 960, 25));
-		obstacles.add(new Rectangle(0, 490, 960, 50));
-		obstacles.add(new Rectangle(0, 0, 25, 515));
-		obstacles.add(new Rectangle(935, 0, 25, 515));
+		obstacles.add(new Rectangle(0, 0, 960, 15));
+		obstacles.add(new Rectangle(0, 505, 960, 15));
+		obstacles.add(new Rectangle(0, 0, 15, 515));
+		obstacles.add(new Rectangle(945, 0, 15, 515));
+		obstacles.add(new Rectangle(320,335,490,20));
+		obstacles.add(new Rectangle(840,240,120,20));
+		obstacles.add(new Rectangle(680,160,20,180));
+		obstacles.add(new Rectangle(120,140,700,20));
+		obstacles.add(new Rectangle(120,140,20,260));
+		obstacles.add(new Rectangle(220,350,20,200));
+		obstacles.add(new Rectangle(320,140,20,195));
 		
 		checkpoints = new ArrayList<Checkpoint>();
-		checkpoints.add(new Checkpoint(new Color(255,246,3),275,300,50,200,0));
+		checkpoints.add(new Checkpoint(new Color(255,246,3),385,300,50,200,0));
 		checkpoints.add(new Checkpoint(new Color(199, 196, 191),575,300,50,200,1));
 		checkpoints.add(new Checkpoint(new Color(199, 196, 191),575,0,50,300,2));
 		checkpoints.add(new Checkpoint(new Color(199, 196, 191),275,0,50,300,3));
@@ -97,14 +102,14 @@ public class GameScreen extends Screen {
 //		p1 = new Car(p1Images, 215, 340, 45, 45);
 //		p2 = new Car(p2Images, 215, 400, 45, 45);
 		if(surface.imageChanger()) {
-			p1 = new Car(surface.loadImage("fidgetspinner1.png"), 215, 340, 35, 35);
-			p2 = new Car(surface.loadImage("fidgetspinner2.png"), 215, 400, 35, 35);
+			p1 = new Car(surface.loadImage("fidgetspinner1.png"), 215, 390, 35, 35);
+			p2 = new Car(surface.loadImage("fidgetspinner2.png"), 215, 450, 35, 35);
 			p1.setMode(true);
 			p2.setMode(true);
 		}
 		else {
-			p1 = new Car(surface.loadImage("car1-1.png"), 215, 340, 35, 35);
-			p2 = new Car(surface.loadImage("car2-1.png"), 215, 400, 35, 35);
+			p1 = new Car(surface.loadImage("car1-1.png"), 285, 400, 35, 35);
+			p2 = new Car(surface.loadImage("car2-1.png"), 285, 450, 35, 35);
 		}
 
 		surface.loadImage("projectile.png");
