@@ -319,13 +319,13 @@ public class GameScreen extends Screen {
 			if (surface.isPressed(KeyEvent.VK_A))
 			{
 				//System.out.println("turn left");
-				p1.turn(-8);
+				p1.turn(-7.75);
 
 			}
 			if (surface.isPressed(KeyEvent.VK_D))
 			{
 				//System.out.println("turn right");
-				p1.turn(8);
+				p1.turn(7.75);
 			}
 			if (surface.isPressed(KeyEvent.VK_W))
 			{
@@ -357,11 +357,11 @@ public class GameScreen extends Screen {
 			}
 			if (surface.isPressed(KeyEvent.VK_LEFT))
 			{
-				p2.turn(-8);
+				p2.turn(-7.75);
 			}
 			if (surface.isPressed(KeyEvent.VK_RIGHT))
 			{
-				p2.turn(8);
+				p2.turn(7.75);
 			}
 			if (surface.isPressed(KeyEvent.VK_UP))
 			{
