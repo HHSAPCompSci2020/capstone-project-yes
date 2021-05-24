@@ -32,7 +32,8 @@ public class GameScreen extends Screen {
 	private Rectangle returnButton;
 
 	/**
-	 * Creates a new GameScreen that takes in the DrawingSurface
+	 * Creates a new GameScreen that takes in the DrawingSurface.
+	 * Sets the scores to 0, and adds all the obstacles, checkpoints, projectiles, and return button into the game.
 	 * @param surface DrawingSurface that will display the graphics
 	 */
 	public GameScreen(DrawingSurface surface)
@@ -75,7 +76,7 @@ public class GameScreen extends Screen {
 	}
 	
 	/**
-	 * Loads in the two cars and projectile image
+	 * Loads in the two cars and projectile images
 	 */
 	public void setup()
 	{
@@ -120,6 +121,7 @@ public class GameScreen extends Screen {
 	 * as well as updates them based on user required inputs.
 	 * Also adds in projectiles based on the user inputting the specified keystroke.
 	 * Deletes the Projectile object when the Projectile's lifespan is 0.
+	 * Shows the graphics when a user wins and plays a victory sound effect.
 	 */
 	public void draw()
 	{
@@ -471,24 +473,18 @@ public class GameScreen extends Screen {
 		}
 	}
 	
-	/*
-	public void rotate(int turn, Car c) {
-		double rad = surface.radians((float) turn);
-		
-		surface.pushMatrix();
-		surface.imageMode(surface.CENTER);
-		surface.translate((float)(c.getX() + c.getWidth()/2), (float)(c.getY() + c.getHeight()/2));
-		surface.rotate((float) rad);
-		surface.image(c.getImage(),(float)c.getX(),(float)c.getY());
-		surface.popMatrix();
-	}
-	*/
-	
+	/**
+	 * Checks when the mouse is pressed in the specific area
+	 * In this case, it would be when the mouse is pressed inside the back button
+	 * (after a player has won the game) to change the screen back to the menu.
+	 * A sound is played when this button is clicked.
+	 */
 	public void mousePressed() {
 		Point p = new Point(surface.mouseX,surface.mouseY);
 		if (returnButton.contains(p))
 			if(win != 0)
 			{
+				surface.stopSound(2);
 				surface.playSound(1);
 				surface.switchScreen(ScreenSwitcher.MENUSCREEN);
 			}

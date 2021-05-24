@@ -9,7 +9,7 @@ import processing.core.PApplet;
  * Used to create the checkpoint the car needs to pass during the game to prevent cheating
  * 
  * @author Alex Lan
- * @version 5/14/21
+ * @version 5/23/21
  */
 public class Checkpoint extends Rectangle2D.Double {
 	//private static final int WIDTH = 45;
@@ -37,11 +37,19 @@ public class Checkpoint extends Rectangle2D.Double {
 		this.num = num;
 	}
 	
+	/**
+	 * the checkpoint's number
+	 * @return the number correlated to the Checkpoint object
+	 */
 	public int getNum()
 	{
 		return num;
 	}
 	
+	/**
+	 * Changes the color of the Checkpoint object to the specified color
+	 * @param c new color the Checkpoint object will become
+	 */
 	public void setColor(Color c)
 	{
 		this.c = c;

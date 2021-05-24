@@ -30,7 +30,8 @@ public class MenuScreen extends Screen {
 	}
 	
 	/**
-	 * Draws the assets for the MenuScreen on the previously inputed DrawingSurface
+	 * Draws the assets for the MenuScreen on the previously inputed DrawingSurface,
+	 *  such reactive buttons, backgrounds, text, etc.
 	 */
 	public void draw()
 	{
@@ -83,7 +84,9 @@ public class MenuScreen extends Screen {
 	/**
 	 * Checks when the mouse is pressed in the specified area
 	 * In this case, it would be when the mouse is pressed inside the start button or how-to-play button
-	 * to change the screen to the GameScreen or the HowToPlayScreen
+	 * to change the screen to the GameScreen or the HowToPlayScreen.
+	 * A sound is played when the buttons are clicked.
+	 * Also, the GameScreen object in DrawingSurface is refreshed when the start button is clicked, so the user can keep playing over and over.
 	 */
 	public void mousePressed() {
 		Point p = new Point(surface.mouseX,surface.mouseY);
