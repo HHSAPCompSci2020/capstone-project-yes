@@ -7,7 +7,7 @@ import java.awt.Rectangle;
  * Used by DrawingSurface to draw the specified screen, which is to show the player a visual of how the game functions
  * 
  * @author Connor Chow
- * @version 5/22/21
+ * @version 5/23/21
  */
 public class HowToPlayScreen extends Screen {
 
@@ -31,6 +31,7 @@ public class HowToPlayScreen extends Screen {
 	
 	/**
 	 * Draws the assets for the HowToPlayScreen on the previously inputed DrawingSurface
+	 *  such reactive buttons, backgrounds, text, etc.
 	 */
 	public void draw()
 	{
@@ -52,7 +53,7 @@ public class HowToPlayScreen extends Screen {
 				"Arrow Keys - Player 2\r\n" + 
 				"\'.\' - Player 2 shoot projectile button\r\n" + 
 				"\'/\' - Player 2 boost\r\n" + 
-				"ESC - Pause / Quit\r\n";
+				"ESC - Quit\r\n";
 		float w = surface.textWidth(menuTitle);
 		surface.text(menuTitle, surface.width/2-w/2, surface.height/8);
 		
@@ -77,7 +78,8 @@ public class HowToPlayScreen extends Screen {
 	/**
 	 * Checks when the mouse is pressed in the specified area
 	 * In this case, it would be when the mouse is pressed inside the back button
-	 * to change the screen to the MenuScreen
+	 * to change the screen to the MenuScreen.
+	 * A sound is played when the back button is clicked.
 	 */
 	public void mousePressed() {
 		Point p = new Point(surface.mouseX,surface.mouseY);

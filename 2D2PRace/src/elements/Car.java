@@ -15,7 +15,7 @@ import processing.core.PImage;
  * Uses a custom images that moves.
  * 
  * @author Alex Lan
- * @version 5/21/21
+ * @version 5/23/21
  */
 public class Car extends MovingImage {
 	
@@ -24,11 +24,12 @@ public class Car extends MovingImage {
 	private boolean onAWall;
 	
 	/**
-	 * Car constructor
-	 * 
+	 * Car constructor. Also sets the friction, speed (default = 0), x and y velocity (default = 0), checkpoint number (default = 0), and boost (default = 3)
 	 * @param img image file that the car will be using
 	 * @param x x-coordinate
 	 * @param y y-coordinate
+	 * @param wid width of the Car object
+	 * @param h height of the Car object
 	 */
 	public Car(PImage img, int x, int y, int wid, int h) {
 		super(img, x, y, wid, h);
@@ -76,7 +77,8 @@ public class Car extends MovingImage {
 	 * as well as the speed (based on how much the user accelerates).
 	 * The friction to the ground is also calculated, as well as the collision with the wall objects.
 	 * These all are then used to update the position of the car.
-	 * @param walls ArrayList of walls that the car cannot pass through
+	 * @param walls ArrayList of walls that this Car object cannot pass through
+	 * @param c car that this Car object cannot pass through
 	 */
 	public void act(ArrayList<Shape> walls, Car c) {
 		yVelocity = speed * Math.sin(Math.toRadians(getDirection()));
@@ -200,16 +202,28 @@ public class Car extends MovingImage {
 		return yVelocity;
 	}
 	
+	/**
+	 * Returns the number of boosts the car has left
+	 * @return number of boosts left (ranging from 0-3)
+	 */
 	public int getBoost()
 	{
 		return boost;
 	}
 	
+	/**
+	 * Gets the checkpoint number stored in the Car Object
+	 * @return the number correlated to the last checkpoint past/inputed into the car
+	 */
 	public int getCheckpoint()
 	{
 		return checkpoint;
 	}
-
+	
+	/**
+	 * Changes the checkpoint number
+	 * @param x value correlated to a checkpoint number
+	 */
 	public void setCheckpoint(int x)
 	{
 		checkpoint = x;

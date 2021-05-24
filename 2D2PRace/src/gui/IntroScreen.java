@@ -37,6 +37,9 @@ public class IntroScreen extends Screen {
 //		System.out.println(this.surface.displayWidth);
 	}
 	
+	/**
+	 * Setup used to print the fonts on the computer
+	 */
 	public void setup() {
 		
 		String[] fonts = PFont.list();
@@ -45,6 +48,7 @@ public class IntroScreen extends Screen {
 	
 	/**
 	 * Draws the assets for the IntroScreen on the previously inputed DrawingSurface
+	 *  such reactive buttons, backgrounds, text, etc.
 	 */
 	public void draw()
 	{
@@ -89,8 +93,9 @@ public class IntroScreen extends Screen {
 	
 	/**
 	 * Checks when the mouse is pressed in the specified area
-	 * In this case, it would be when the mouse is pressed inside the start button
-	 * to change the screen to the MenuScreen
+	 * In this case, it would be when the mouse is pressed inside the start button or the background button
+	 * to change the screen to the MenuScreen, or show off the game's easter egg.
+	 * Each button plays a sound when the buttons are clicked.
 	 */
 	public void mousePressed() {
 		Point p = new Point(surface.mouseX,surface.mouseY);

@@ -9,7 +9,7 @@ import processing.sound.SoundFile;
  * Used by Main class/method to draw the game that is projected onto the screen
  * 
  * @author Connor Chow
- * @version 5/21/21
+ * @version 5/23/21
  */
 public class DrawingSurface extends PApplet implements ScreenSwitcher {
 
@@ -23,7 +23,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	private SoundFile[] sounds;
 	
 	/**
-	 * Create a new DrawingSurface that fills in the different screens
+	 * Create a new DrawingSurface that fills in the different screens (using an ArrayList to store the different screens)
 	 */
 	public DrawingSurface() {
 		screens = new ArrayList<Screen>();
@@ -50,7 +50,9 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	}
 	
 	/**
-	 * Sets up each screen
+	 * Sets up each screen and loads all the sounds.
+	 * Originally shows a loading screen while the sounds are loaded in.
+	 * (Estimate time: 10-15 seconds to load in the sound files)
 	 */
 	public void setup() {
 		push();
@@ -77,6 +79,9 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	
 	// ----------------------
 	
+	/**
+	 * Refreshes the GameScreen by creating a new one and adding it to the ArrayList of screens.
+	 */
 	public void refreshGameScreen()
 	{
 		GameScreen gameScreen = new GameScreen(this);
@@ -152,23 +157,44 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 	
 	// ----------------------
 
+	/**
+	 * Changes the images (used mainly for GameScreen)
+	 * @param b true or false = custom or default
+	 */
 	public void setImageChanger(boolean b) {
 		imgChanger = b;
 	}
+	
+	/**
+	 * Returns whether the images should be changed or not
+	 * @return true or false, whether images should be changed or not
+	 */
 	public boolean imageChanger() {
 		return imgChanger;
 	}
 	
-	
-	public void loadNextSong() {
+	/**
+	 * Loads the sound files
+	 */
+	private void loadNextSong() {
 		for (int loadIndex = 0; loadIndex < soundFileNames.length; loadIndex++) {
 			sounds[loadIndex] = new SoundFile(this, soundFileNames[loadIndex]);
 		}
 	}
+	
+	/**
+	 * Plays a specific sound effect or song
+	 * @param i inputed number correlated to a song or sound in the list on the DrawingSurface object
+	 */
 	public void playSound(int i) {
 		sounds[i].cue(0);
 		sounds[i].play();
 	}
+	
+	/**
+	 * Stops the specified sound from playing
+	 * @param i inputed number correlated to a song or sound in the list on the DrawingSurface object
+	 */
 	public void stopSound(int i) {
 		sounds[i].stop();
 	}
