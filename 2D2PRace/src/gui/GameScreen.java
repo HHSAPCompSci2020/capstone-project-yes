@@ -134,8 +134,8 @@ public class GameScreen extends Screen {
 		if(p1Score == 0 && p2Score == 0)
 		{
 			surface.fill(145, 6, 6);
-			surface.rect(420,435,50,15);
-			surface.triangle(470,420,470,465,495,442.5f);
+			surface.rect(420,430,50,15);
+			surface.triangle(470,415,470,460,495,437.5f);
 			
 		}
 		
@@ -173,7 +173,7 @@ public class GameScreen extends Screen {
 		String scoreboard = "Scores:\nP1: " + p1Score + ", P1C: " + p1.getCheckpoint() + ", Boosts Left: " + p1.getBoost() 
 							+ "\nP2: " + p2Score + ", P2C: " + p2.getCheckpoint() + ", Boosts Left: " + p2.getBoost();
 		float scoreboardLength = surface.textWidth(scoreboard);
-		surface.text(scoreboard, 30, 40);
+		surface.text(scoreboard, 350, 200);
 
 		
 		surface.pop();
