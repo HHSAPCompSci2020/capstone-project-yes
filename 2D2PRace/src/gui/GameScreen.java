@@ -17,7 +17,7 @@ import processing.core.PImage;
  * player the game interface
  * 
  * @author Connor Chow
- * @version 5/23/21
+ * @version 5/24/21
  */
 public class GameScreen extends Screen {
 
@@ -225,10 +225,12 @@ public class GameScreen extends Screen {
 						if(p1.getCheckpoint() == c.getNum() - 1)
 						{
 							p1.setCheckpoint(c.getNum());
+							surface.playSound(3);
 						}
 						if(p2.getCheckpoint() == c.getNum() - 1)
 						{
 							p2.setCheckpoint(c.getNum());
+							surface.playSound(3);
 						}
 					}
 					else if(p1.intersects(c))
@@ -238,6 +240,7 @@ public class GameScreen extends Screen {
 						if(p1.getCheckpoint() == c.getNum() - 1)
 						{
 							p1.setCheckpoint(c.getNum());
+							surface.playSound(3);
 						}
 					}
 					else if(p2.intersects(c))
@@ -247,6 +250,7 @@ public class GameScreen extends Screen {
 						if(p2.getCheckpoint() == c.getNum() - 1)
 						{
 							p2.setCheckpoint(c.getNum());
+							surface.playSound(3);
 						}
 					}
 					else
@@ -267,6 +271,7 @@ public class GameScreen extends Screen {
 							{
 								p1.setCheckpoint(c.getNum());
 								p1Score++;
+								surface.playSound(3);
 							}
 						}
 						if(p2.getCheckpoint() == 3)
@@ -275,6 +280,7 @@ public class GameScreen extends Screen {
 							{
 								p2.setCheckpoint(c.getNum());
 								p2Score++;
+								surface.playSound(3);
 							}
 						}
 					}
@@ -288,6 +294,7 @@ public class GameScreen extends Screen {
 							{
 								p1.setCheckpoint(c.getNum());
 								p1Score++;
+								surface.playSound(3);
 							}
 						}
 					}
@@ -301,6 +308,7 @@ public class GameScreen extends Screen {
 							{
 								p2.setCheckpoint(c.getNum());
 								p2Score++;
+								surface.playSound(3);
 							}
 						}
 					}

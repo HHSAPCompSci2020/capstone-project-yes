@@ -9,7 +9,7 @@ import processing.sound.SoundFile;
  * Used by Main class/method to draw the game that is projected onto the screen
  * 
  * @author Connor Chow
- * @version 5/23/21
+ * @version 5/24/21
  */
 public class DrawingSurface extends PApplet implements ScreenSwitcher {
 
@@ -45,7 +45,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		
 		imgChanger = false;
 		
-		soundFileNames = new String[] {"data/bgMusic.mp3", "data/mouseClick.mp3", "data/victorySound.mp3"};
+		soundFileNames = new String[] {"data/bgMusic.mp3", "data/mouseClick.mp3", "data/victorySound.mp3", "data/ding.mp3"};
 		sounds = new SoundFile[soundFileNames.length];
 	}
 	
@@ -67,6 +67,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher {
 		sounds[0].amp((float) 0.05);
 		sounds[1].amp((float) 0.1);
 		sounds[2].amp((float) 0.1);
+		sounds[3].amp((float) 0.075);
 
 	}
 
